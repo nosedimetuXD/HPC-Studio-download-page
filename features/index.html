@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features - HPC Studio | The Scientific IDE for Supercomputing</title>
+  <meta name="description" content="Discover the core capabilities of HPC Studio: Quantum ESPRESSO semantic intelligence, interactive 3D crystal visualization, Slurm workload orchestration, and autonomous simulation AI agents.">
+  <meta name="keywords" content="HPC Studio Features, Quantum ESPRESSO IDE, Slurm Manager, 3D Crystal Visualizer, Simulation AI Agents, Code OSS">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Features - HPC Studio">
+  <meta property="og:description" content="A world-class scientific IDE engineered for supercomputing, ab initio simulation, and cluster management.">
+  <meta property="og:url" content="https://hpc-studio.dev/features/">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/docs.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/hpc-studio.svg">
+  <style>
+    .features-page-hero {
+      padding: 60px 40px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .features-page-title {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-headline);
+      margin-bottom: 16px;
+    }
+    .features-page-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-body);
+      max-width: 800px;
+      margin: 0 auto 32px;
+    }
+    .features-deep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 40px;
+    }
+    .feature-deep-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-deep-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-arc-cyan);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25), 0 0 16px rgba(0, 210, 255, 0.1);
+    }
+    [data-theme="light"] .feature-deep-card {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    [data-theme="light"] .feature-deep-card:hover {
+      border-color: #0078D4;
+      background: #F8FAFC;
+      box-shadow: 0 8px 24px rgba(0, 120, 212, 0.12);
+    }
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 210, 255, 0.1);
+      color: var(--color-arc-cyan);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+    }
+    [data-theme="light"] .feature-icon-wrapper {
+      background: #E0F2FE;
+      color: #0284C7;
+      border-color: #7DD3FC;
+    }
+    .feature-deep-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-headline);
+    }
+    .feature-deep-card p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-body);
+      flex: 1;
+    }
+    .feature-deep-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-link);
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .feature-deep-link:hover {
+      color: var(--text-link-hover);
+      text-decoration: underline;
+    }
+    @media (max-width: 960px) {
+      .features-deep-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+      .features-page-hero {
+        padding: 40px 20px;
+      }
+      .features-page-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <!-- Main Navigation (74px) -->
+    <header class="main-navigation" role="banner">
+      <div class="nav-links-cluster">
+        <a href="../" class="brand-container" aria-label="HPC Studio Home">
+          <img src="../assets/icons/hpc-studio.svg" class="brand-logo-svg" alt="HPC Studio Logo" width="26" height="26">
+          <span class="brand-name">HPC Studio</span>
+        </a>
+
+        <nav class="site-links" aria-label="Main Navigation">
+          <a href="../docs/" class="nav-link-item">Docs</a>
+          <a href="../features/" class="nav-link-item active" aria-current="page">Features</a>
+          <a href="../extensions/" class="nav-link-item">Extensions</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio/releases" target="_blank" rel="noopener noreferrer" class="nav-link-item">Releases</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="nav-link-item">GitHub</a>
+        </nav>
+      </div>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="theme-toggle-action" title="Toggle color theme" aria-label="Toggle theme">
+          <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+        </button>
+
+        <a href="../#downloads-matrix" class="nav-download-button">
+          <span class="btn-main-text">Download</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Features Hero -->
+    <section class="features-page-hero">
+      <h1 class="features-page-title">Engineered for Supercomputing</h1>
+      <p class="features-page-subtitle">
+        HPC Studio redefines scientific software authoring. Built on Code OSS, it unites ab initio simulation engines, cluster workload managers, real-time 3D crystallography, and autonomous AI agents in a single, high-performance workstation interface.
+      </p>
+    </section>
+
+    <!-- 6 Pillar Feature Cards Grid -->
+    <section class="features-deep-grid" aria-label="Feature Pillars">
+      
+      <!-- Feature 1: Quantum ESPRESSO -->
+      <div class="feature-deep-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+            <circle cx="12" cy="12" r="3"/>
+            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"/>
+            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(90 12 12)"/>
+            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(150 12 12)"/>
+          </svg>
+        </div>
+        <h3>Quantum ESPRESSO Native</h3>
+        <p>
+          Semantic validation and IntelliSense for over 400 namelist variables across <code>pw.x</code>, <code>cp.x</code>, and <code>ph.x</code>. Automatic detection of missing UPF pseudopotentials and one-click retrieval from the SSSP library.
+        </p>
+        <a href="../docs/#quantum-espresso" class="feature-deep-link">Read QE Documentation &rarr;</a>
+      </div>
+
+      <!-- Feature 2: Slurm Workload Manager -->
+      <div class="feature-deep-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+            <path d="M7 13h.01M12 13h.01M17 13h.01M7 9h10"/>
+          </svg>
+        </div>
+        <h3>Slurm Cluster Orchestration</h3>
+        <p>
+          Generate hardened SBATCH scripts with the interactive wizard, monitor partition queues, cancel runaway jobs, and stream live <code>slurm-%j.out</code> execution logs directly inside your editor.
+        </p>
+        <a href="../docs/#slurm" class="feature-deep-link">Read Slurm Guide &rarr;</a>
+      </div>
+
+      <!-- Feature 3: Autonomous AI Agents -->
+      <div class="feature-deep-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3>Autonomous Simulation Agents</h3>
+        <p>
+          Powered by the Model Context Protocol (MCP), agents diagnose SCF charge sloshing, optimize k-point sampling, and execute automated energy convergence sweeps without manual intervention.
+        </p>
+        <a href="../docs/#agents" class="feature-deep-link">Explore Agent Workflows &rarr;</a>
+      </div>
+
+      <!-- Feature 4: 3D Crystal Viewer -->
+      <div class="feature-deep-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>Interactive 3D Crystallography</h3>
+        <p>
+          Hardware-accelerated WebGL unit cell visualizer. Inspect lattice vectors, replicate periodic boundary supercells, measure interatomic bond angles, and export raytraced images for publication.
+        </p>
+        <a href="../docs/#qe-crystal-viewer" class="feature-deep-link">View 3D Capabilities &rarr;</a>
+      </div>
+
+      <!-- Feature 5: Remote SSH Multiplexing -->
+      <div class="feature-deep-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+            <line x1="6" y1="6" x2="6.01" y2="6"/>
+            <line x1="6" y1="18" x2="6.01" y2="18"/>
+          </svg>
+        </div>
+        <h3>Remote Cluster SSH Tunneling</h3>
+        <p>
+          Seamless bastion host ProxyJump support and persistent SSH ControlMaster multiplexing. Edit remote cluster scripts and run interactive debug shells without recurring authentication prompts.
+        </p>
+        <a href="../docs/#ssh-setup" class="feature-deep-link">Configure Remote SSH &rarr;</a>
+      </div>
+
+      <!-- Feature 6: Extensibility & Grammars -->
+      <div class="feature-deep-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3>Scientific Extensibility API</h3>
+        <p>
+          Full compatibility with Visual Studio Code extensions. Includes native TextMate grammars for Fortran, Slurm, CIF, LAMMPS, and VASP, plus dedicated APIs for supercomputing tool developers.
+        </p>
+        <a href="../docs/#api-grammars" class="feature-deep-link">API &amp; Extensions &rarr;</a>
+      </div>
+
+    </section>
+
+    <!-- Atmospheric Callout Banner -->
+    <section class="free-agents-callout-wrapper" aria-label="Free and Open Source Announcement" style="padding: 0 40px 60px;">
+      <div class="copilot-free-banner">
+        <h2 class="banner-heading-text">Ready to supercharge your scientific simulations?</h2>
+        <div class="banner-action-col">
+          <div class="banner-desc-text">Open source, completely free, built on Code OSS.</div>
+          <a href="../#downloads-matrix" class="banner-try-button">
+            <span class="btn-main-text">Download HPC Studio Free</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer-section" role="contentinfo">
+      <div class="footer-social-row">
+        <div class="footer-social-links">
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub Repository">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <a href="../" aria-label="HPC Studio Home">
+          <img src="../assets/icons/hpc-studio.svg" class="footer-brand-logo-right" alt="HPC Studio" width="26" height="26">
+        </a>
+      </div>
+
+      <div class="footer-legal-row">
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/issues" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Support / Issues</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/discussions" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Discussions</a>
+        <a href="../docs/" class="footer-legal-link">Documentation</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-legal-link">License (MIT)</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="footer-legal-link">GitHub Repo</a>
+      </div>
+
+      <div class="footer-copyright-row">
+        <span class="footer-copyright-text">&copy; 2026 HPC Studio Contributors. Built on Code OSS.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Toggle & Scripts -->
+  <script src="../js/theme.js"></script>
+</body>
+</html>

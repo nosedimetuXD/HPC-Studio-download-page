@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation - HPC Studio | The Scientific IDE for Supercomputing</title>
+  <meta name="description" content="Comprehensive documentation for HPC Studio: The scientific IDE engineered for supercomputing, Quantum ESPRESSO, Slurm workload management, and autonomous AI simulation agents.">
+  <meta name="keywords" content="HPC Studio Documentation, Quantum ESPRESSO tutorial, Slurm batch script, Supercomputing IDE, DFT, Materials Science, AI Agents, MCP, Code OSS">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Documentation - HPC Studio">
+  <meta property="og:description" content="Guides, tutorials, and API reference for Quantum ESPRESSO, Slurm cluster management, and AI simulation agents.">
+  <meta property="og:url" content="https://hpc-studio.dev/docs.html">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/docs.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/hpc-studio.svg">
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <!-- =========================================================================
+         1. TOP NAVIGATION (Matching Site, 74px)
+         ========================================================================= -->
+    <header class="main-navigation" role="banner">
+      <div class="nav-links-cluster">
+        <a href="../" class="brand-container" aria-label="HPC Studio Home">
+          <!-- Official HPC Studio Arc Reactor Logo -->
+          <img src="../assets/icons/hpc-studio.svg" class="brand-logo-svg" alt="HPC Studio Logo" width="26" height="26">
+          <span class="brand-name">HPC Studio</span>
+        </a>
+
+        <nav class="site-links" aria-label="Main Navigation">
+          <a href="../docs/" class="nav-link-item active" aria-current="page">Docs</a>
+          <a href="../features/" class="nav-link-item">Features</a>
+          <a href="../extensions/" class="nav-link-item">Extensions</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio/releases" target="_blank" rel="noopener noreferrer" class="nav-link-item">Releases</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="nav-link-item">GitHub</a>
+        </nav>
+      </div>
+
+      <div class="nav-actions">
+        <div class="search-box-pill" role="search" id="nav-search-box">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="7" cy="7" r="5"/>
+            <line x1="10.5" y1="10.5" x2="14.5" y2="14.5"/>
+          </svg>
+          <div class="nav-doc-search-wrapper">
+            <input type="text" id="nav-search-input" class="nav-doc-search-input" placeholder="Search docs..." aria-label="Search documentation">
+          </div>
+          <span class="keyboard-shortcut-badge">Ctrl K</span>
+        </div>
+
+        <button id="theme-toggle-btn" class="theme-toggle-action" title="Toggle color theme" aria-label="Toggle theme">
+          <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+        </button>
+
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/tag/v1.143.0" class="nav-download-button">
+          <span class="btn-main-text">Download</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer Bar (<960px) -->
+    <div class="docs-mobile-bar" aria-label="Mobile Documentation Controls">
+      <button id="docs-mobile-sidebar-toggle" class="docs-mobile-toggle-btn" aria-expanded="false" aria-controls="docs-sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span>Table of Contents</span>
+      </button>
+      <span style="font-size: 13px; color: var(--color-arc-cyan); font-weight: 600;">v1.143</span>
+    </div>
+
+    <!-- =========================================================================
+         2. TWO-COLUMN DOCUMENTATION PORTAL
+         ========================================================================= -->
+    <div class="docs-layout-container">
+      
+      <!-- -----------------------------------------------------------------------
+           LEFT SIDEBAR: Collapsible Table of Contents & Topic Filter
+           ----------------------------------------------------------------------- -->
+      <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation Navigation">
+        <!-- Topic Quick Search -->
+        <div class="docs-sidebar-filter">
+          <input type="text" id="docs-filter-input" placeholder="Filter documentation topics..." aria-label="Filter documentation topics">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="7" cy="7" r="5"/>
+            <line x1="10.5" y1="10.5" x2="14.5" y2="14.5"/>
+          </svg>
+        </div>
+
+        <nav class="docs-nav-tree" aria-label="Documentation Categories">
+          
+          <!-- Group 1: Getting Started -->
+          <div class="docs-nav-group">
+            <div class="docs-nav-group-header" tabindex="0" role="button" aria-expanded="true">
+              <span class="group-title-cluster">
+                <span>Getting Started</span>
+              </span>
+              <svg class="group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="docs-nav-group-items">
+              <a href="#overview" class="docs-topic-link active" data-topic-title="Overview & Architecture">
+                <span>Overview</span>
+              </a>
+              <a href="#installation" class="docs-topic-link" data-topic-title="Installation Guide">
+                <span>Installation</span>
+                <span class="docs-topic-badge">v1.143</span>
+              </a>
+              <a href="#ssh-setup" class="docs-topic-link" data-topic-title="Remote Cluster SSH Setup">
+                <span>Remote Cluster SSH</span>
+              </a>
+              <a href="#quantum-mobile" class="docs-topic-link" data-topic-title="Quantum Mobile VM">
+                <span>Quantum Mobile VM</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Group 2: Quantum ESPRESSO -->
+          <div class="docs-nav-group">
+            <div class="docs-nav-group-header" tabindex="0" role="button" aria-expanded="true">
+              <span class="group-title-cluster">
+                <span>Quantum ESPRESSO</span>
+              </span>
+              <svg class="group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="docs-nav-group-items">
+              <a href="#qe-scf-relax" class="docs-topic-link" data-topic-title="SCF & Relax Calculations">
+                <span>SCF &amp; Relax Calculations</span>
+              </a>
+              <a href="#qe-pseudopotentials" class="docs-topic-link" data-topic-title="UPF Pseudopotentials Library">
+                <span>UPF Pseudopotentials</span>
+              </a>
+              <a href="#qe-crystal-viewer" class="docs-topic-link" data-topic-title="3D Crystal Viewer">
+                <span>3D Crystal Viewer</span>
+                <span class="docs-topic-badge">WebGL</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Group 3: Slurm Workload Manager -->
+          <div class="docs-nav-group">
+            <div class="docs-nav-group-header" tabindex="0" role="button" aria-expanded="true">
+              <span class="group-title-cluster">
+                <span>Slurm Manager</span>
+              </span>
+              <svg class="group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="docs-nav-group-items">
+              <a href="#slurm-sbatch" class="docs-topic-link" data-topic-title="SBATCH Generator">
+                <span>SBATCH Generator</span>
+              </a>
+              <a href="#slurm-queue" class="docs-topic-link" data-topic-title="Cluster Queue Monitoring">
+                <span>Queue Monitoring</span>
+              </a>
+              <a href="#slurm-mpi-openmp" class="docs-topic-link" data-topic-title="MPI / OpenMP Optimization">
+                <span>MPI/OpenMP Optimization</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Group 4: Simulation AI Agents -->
+          <div class="docs-nav-group">
+            <div class="docs-nav-group-header" tabindex="0" role="button" aria-expanded="true">
+              <span class="group-title-cluster">
+                <span>Simulation AI Agents</span>
+              </span>
+              <svg class="group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="docs-nav-group-items">
+              <a href="#agents-convergence" class="docs-topic-link" data-topic-title="Convergence Diagnostics">
+                <span>Convergence Diagnostics</span>
+              </a>
+              <a href="#agents-mcp" class="docs-topic-link" data-topic-title="Model Context Protocol (MCP)">
+                <span>Model Context Protocol (MCP)</span>
+              </a>
+              <a href="#agents-sweeps" class="docs-topic-link" data-topic-title="Parameter Sweeps">
+                <span>Parameter Sweeps</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Group 5: API & Extensibility -->
+          <div class="docs-nav-group">
+            <div class="docs-nav-group-header" tabindex="0" role="button" aria-expanded="true">
+              <span class="group-title-cluster">
+                <span>API &amp; Extensibility</span>
+              </span>
+              <svg class="group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="docs-nav-group-items">
+              <a href="#api-grammars" class="docs-topic-link" data-topic-title="Custom Language Grammars">
+                <span>Custom Grammars</span>
+              </a>
+              <a href="#api-extensions" class="docs-topic-link" data-topic-title="Extension API">
+                <span>Extension API</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Group 6: FAQ & Troubleshooting -->
+          <div class="docs-nav-group">
+            <div class="docs-nav-group-header" tabindex="0" role="button" aria-expanded="true">
+              <span class="group-title-cluster">
+                <span>FAQ &amp; Troubleshooting</span>
+              </span>
+              <svg class="group-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="docs-nav-group-items">
+              <a href="#faq" class="docs-topic-link" data-topic-title="FAQ & Troubleshooting">
+                <span>Troubleshooting Guide</span>
+              </a>
+            </div>
+          </div>
+
+        </nav>
+      </aside>
+
+      <!-- -----------------------------------------------------------------------
+           MAIN CONTENT AREA
+           ----------------------------------------------------------------------- -->
+      <main class="docs-main-content" id="main-content" role="main">
+
+        <!-- Breadcrumbs -->
+        <nav class="docs-breadcrumbs" aria-label="Breadcrumb">
+          <a href="../">HPC Studio</a>
+          <span class="sep">/</span>
+          <a href="../docs/">Docs</a>
+          <span class="sep">/</span>
+          <span class="current">Overview</span>
+        </nav>
+
+        <!-- Hero / Header -->
+        <header class="docs-hero-header">
+          <div class="docs-version-badge-row">
+            <span class="docs-pill">
+              <span class="docs-pill-pulse"></span>
+              Release 1.143 (Scientific Edition)
+            </span>
+            <span class="docs-pill-secondary">Code OSS 1.96 Core</span>
+            <span class="docs-pill-secondary">Quantum ESPRESSO 7.3+</span>
+            <span class="docs-pill-secondary">Slurm 23.11+</span>
+          </div>
+
+          <h1 class="docs-hero-title">HPC Studio Documentation</h1>
+          <p class="docs-hero-subtitle">
+            The scientific IDE engineered for supercomputing, Quantum ESPRESSO, and autonomous AI agents. Seamlessly author DFT inputs, monitor remote Slurm clusters, inspect 3D crystal structures, and automate convergence workflows.
+          </p>
+        </header>
+
+        <!-- Quickstart Feature Cards Grid (4 Cards) -->
+        <section aria-labelledby="quickstart-title">
+          <h2 id="quickstart-title" class="quickstart-section-heading">
+            <span>Quickstart Guides</span>
+          </h2>
+          <div class="quickstart-cards-grid">
+            
+            <!-- Card 1: Get Started -->
+            <a href="#overview" class="quickstart-card">
+              <div class="quickstart-card-top">
+                <div class="quickstart-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                  </svg>
+                </div>
+                <svg class="quickstart-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+              <h3 class="quickstart-card-title">Get Started with HPC Studio</h3>
+              <p class="quickstart-card-desc">
+                Setup your local workstation, configure the Code OSS scientific shell, and connect securely to remote supercomputing clusters over SSH.
+              </p>
+              <div class="quickstart-tags">
+                <span class="quickstart-tag">Linux / macOS / WSL2</span>
+                <span class="quickstart-tag">SSH Keys</span>
+                <span class="quickstart-tag">ProxyJump</span>
+              </div>
+            </a>
+
+            <!-- Card 2: Run your first SCF -->
+            <a href="#quantum-espresso" class="quickstart-card">
+              <div class="quickstart-card-top">
+                <div class="quickstart-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;">
+                    <circle cx="12" cy="12" r="3"/>
+                    <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"/>
+                    <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(90 12 12)"/>
+                    <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(150 12 12)"/>
+                  </svg>
+                </div>
+                <svg class="quickstart-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+              <h3 class="quickstart-card-title">Run your first SCF Calculation</h3>
+              <p class="quickstart-card-desc">
+                Author self-consistent field (SCF) calculations with IntelliSense, auto-fetch UPF pseudopotentials, and preview the Silicon diamond lattice in 3D.
+              </p>
+              <div class="quickstart-tags">
+                <span class="quickstart-tag">pw.scf.in</span>
+                <span class="quickstart-tag">SSSP Pseudopotentials</span>
+                <span class="quickstart-tag">3D Viewer</span>
+              </div>
+            </a>
+
+            <!-- Card 3: Cluster & Slurm Management -->
+            <a href="#slurm" class="quickstart-card">
+              <div class="quickstart-card-top">
+                <div class="quickstart-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                    <path d="M7 13h.01M12 13h.01M17 13h.01M7 9h10"/>
+                  </svg>
+                </div>
+                <svg class="quickstart-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+              <h3 class="quickstart-card-title">Cluster &amp; Slurm Management</h3>
+              <p class="quickstart-card-desc">
+                Generate production-ready SBATCH scripts, monitor compute node partition health, and stream live job logs directly inside the editor.
+              </p>
+              <div class="quickstart-tags">
+                <span class="quickstart-tag">SBATCH Wizard</span>
+                <span class="quickstart-tag">MPI + OpenMP</span>
+                <span class="quickstart-tag">squeue Dashboard</span>
+              </div>
+            </a>
+
+            <!-- Card 4: Autonomous Simulation Agents -->
+            <a href="#agents" class="quickstart-card">
+              <div class="quickstart-card-top">
+                <div class="quickstart-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <svg class="quickstart-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+              <h3 class="quickstart-card-title">Autonomous Simulation Agents</h3>
+              <p class="quickstart-card-desc">
+                Leverage local or remote AI agents powered by the Model Context Protocol (MCP) to diagnose SCF convergence failures and automate parameter sweeps.
+              </p>
+              <div class="quickstart-tags">
+                <span class="quickstart-tag">MCP Tools</span>
+                <span class="quickstart-tag">SCF Diagnosis</span>
+                <span class="quickstart-tag">k-point Grid Search</span>
+              </div>
+            </a>
+
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 1: OVERVIEW & ARCHITECTURE
+             ===================================================================== -->
+        <section class="docs-section" id="overview">
+          <div class="section-heading-cluster">
+            <h2>Overview &amp; Architecture</h2>
+            <a href="#overview" class="section-anchor-link" aria-label="Link to Overview section">#</a>
+          </div>
+
+          <p>
+            Traditional computational materials science relies on fragmented tools: generic text editors for writing Fortran namelists, manual terminal SSH sessions for submitting jobs, third-party desktop tools for crystal visualization, and manual log grep-ing for diagnosing convergence failures.
+          </p>
+
+          <p>
+            <strong>HPC Studio</strong> unifies this workflow into a single, high-performance developer environment built upon the rock-solid open-source foundation of <strong>Code OSS</strong>. It integrates domain-aware scientific linting, direct Slurm workload scheduling, real-time WebGL crystallography rendering, and autonomous AI agents through the Model Context Protocol (MCP).
+          </p>
+
+          <div class="admonition note">
+            <svg class="admonition-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <div class="admonition-body">
+              <span class="admonition-title">Built on Code OSS 1.96</span>
+              <span>All your existing VS Code keybindings, color themes, snippets, and extensions (Python, C/C++, Fortran, GitLens, Remote-SSH) work out of the box in HPC Studio.</span>
+            </div>
+          </div>
+
+          <h3>Core Architecture</h3>
+          <p>
+            HPC Studio separates the lightweight desktop GUI client from the heavy computational workload executing on supercomputer nodes:
+          </p>
+
+          <div class="docs-table-wrapper">
+            <table class="docs-table">
+              <thead>
+                <tr>
+                  <th>Layer</th>
+                  <th>Component</th>
+                  <th>Primary Responsibility</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Presentation</strong></td>
+                  <td>Desktop Workbench</td>
+                  <td>TextMate grammar highlighting, 3D WebGL crystal viewer, Slurm activity bar, agent chat panel.</td>
+                </tr>
+                <tr>
+                  <td><strong>Remote Protocol</strong></td>
+                  <td>SSH Daemon &amp; Multiplexing</td>
+                  <td>Zero-overhead SSH channel via ControlMaster/ProxyJump, bidirectional file sync, tunnel forwarding.</td>
+                </tr>
+                <tr>
+                  <td><strong>Domain Engine</strong></td>
+                  <td>QE &amp; DFT Language Server</td>
+                  <td>AST validation for namelists (<code>&amp;CONTROL</code>, <code>&amp;SYSTEM</code>), cutoff cross-checks with UPF headers.</td>
+                </tr>
+                <tr>
+                  <td><strong>HPC Scheduler</strong></td>
+                  <td>Slurm REST / CLI Adapter</td>
+                  <td>Interactive SBATCH generator, live <code>squeue</code> polling, dynamic partition node allocation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Autonomous Layer</strong></td>
+                  <td>Simulation Agent (MCP)</td>
+                  <td>Log monitoring, DFT charge-sloshing anomaly detection, automated parameter sweeps.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 2: INSTALLATION
+             ===================================================================== -->
+        <section class="docs-section" id="installation">
+          <div class="section-heading-cluster">
+            <h2>Installation</h2>
+            <a href="#installation" class="section-anchor-link" aria-label="Link to Installation section">#</a>
+          </div>
+
+          <p>
+            HPC Studio is packaged natively across all major desktop operating systems with self-updating capabilities and zero external runtime dependencies.
+          </p>
+
+          <h3>Linux (Debian / Ubuntu / Pop!_OS)</h3>
+          <p>Download the official <code>.deb</code> package from GitHub Releases and install using <code>apt</code> or <code>dpkg</code>:</p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>Terminal (bash)</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">Shell</span>
+                <button class="code-copy-btn" data-copy-target="#code-install-deb" aria-label="Copy installation command">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-install-deb"><span class="tok-comment"># Download official Debian package</span>
+<span class="tok-func">wget</span> https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio_1.143.0_amd64.deb
+
+<span class="tok-comment"># Install HPC Studio and resolve dependencies</span>
+<span class="tok-func">sudo</span> apt update &amp;&amp; <span class="tok-func">sudo</span> apt install -y ./hpc-studio_1.143.0_amd64.deb
+
+<span class="tok-comment"># Launch the IDE</span>
+hpc-studio</code></pre>
+          </div>
+
+          <h3>Generic Linux Tarball (.tar.gz)</h3>
+          <p>For systems without root access or running on enterprise distributions (RHEL, Rocky Linux, CentOS Stream):</p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>Standalone Tarball</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">Shell</span>
+                <button class="code-copy-btn" data-copy-target="#code-install-tar" aria-label="Copy tarball command">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-install-tar"><span class="tok-func">tar</span> -xvf hpc-studio-linux-x64-1.143.0.tar.gz
+<span class="tok-func">cd</span> hpc-studio-linux-x64
+./bin/hpc-studio</code></pre>
+          </div>
+
+          <h3>macOS &amp; Windows (WSL2)</h3>
+          <p>
+            <strong>macOS:</strong> Download the Universal <code>.dmg</code> or <code>.zip</code>. Drag HPC Studio into your <code>/Applications</code> folder. Both Apple Silicon (M1/M2/M3/M4) and Intel architectures are natively supported.
+          </p>
+          <p>
+            <strong>Windows via WSL2:</strong> We strongly recommend installing HPC Studio on your Windows host while running the HPC Studio remote agent inside your WSL2 Ubuntu distribution for optimal Linux supercomputing parity.
+          </p>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 3: REMOTE CLUSTER SSH SETUP
+             ===================================================================== -->
+        <section class="docs-section" id="ssh-setup">
+          <div class="section-heading-cluster">
+            <h2>Remote Cluster SSH Setup</h2>
+            <a href="#ssh-setup" class="section-anchor-link" aria-label="Link to Remote Cluster SSH Setup section">#</a>
+          </div>
+
+          <p>
+            HPC clusters almost universally mandate connection through a secure <em>bastion host</em> or login gateway. HPC Studio includes native SSH tunnel multiplexing so you can edit remote simulation files and run Slurm commands seamlessly without continuous password prompts.
+          </p>
+
+          <h3>Configuring ~/.ssh/config</h3>
+          <p>
+            Add your cluster host definitions to <code>~/.ssh/config</code>. HPC Studio automatically detects all hosts defined in this file and presents them in the Remote Explorer activity bar:
+          </p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>~/.ssh/config</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">SSH Config</span>
+                <button class="code-copy-btn" data-copy-target="#code-ssh-config" aria-label="Copy SSH config">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-ssh-config"><span class="tok-comment"># =========================================================================</span>
+<span class="tok-comment"># HPC Studio Remote Cluster Configuration</span>
+<span class="tok-comment"># =========================================================================</span>
+
+<span class="tok-comment"># 1. Bastion / Jump Host Gateway</span>
+<span class="tok-keyword">Host</span> hpc-gateway
+    <span class="tok-prop">HostName</span> gateway.supercomputer.ac.uk
+    <span class="tok-prop">User</span> quantum_user
+    <span class="tok-prop">IdentityFile</span> ~/.ssh/id_ed25519_hpc
+    <span class="tok-prop">ServerAliveInterval</span> 60
+    <span class="tok-prop">ServerAliveCountMax</span> 5
+
+<span class="tok-comment"># 2. Compute Login Node (Accessible via ProxyJump)</span>
+<span class="tok-keyword">Host</span> hpc-cluster-login01
+    <span class="tok-prop">HostName</span> login01.internal.supercomputer.local
+    <span class="tok-prop">User</span> quantum_user
+    <span class="tok-prop">ProxyJump</span> hpc-gateway
+    <span class="tok-prop">IdentityFile</span> ~/.ssh/id_ed25519_hpc
+    <span class="tok-prop">ControlMaster</span> auto
+    <span class="tok-prop">ControlPath</span> ~/.ssh/sockets/%r@%h:%p
+    <span class="tok-prop">ControlPersist</span> 4h
+    <span class="tok-prop">ForwardAgent</span> yes</code></pre>
+          </div>
+
+          <div class="admonition tip">
+            <svg class="admonition-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M9 11l3 3L22 4"></path>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+            <div class="admonition-body">
+              <span class="admonition-title">Pro Tip: ControlMaster Multiplexing</span>
+              <span>Setting <code>ControlPersist 4h</code> allows multiple terminals, Slurm queue pollers, and file saves to reuse the existing encrypted SSH socket without re-authenticating every transaction.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 4: QUANTUM MOBILE VM
+             ===================================================================== -->
+        <section class="docs-section" id="quantum-mobile">
+          <div class="section-heading-cluster">
+            <h2>Quantum Mobile VM</h2>
+            <a href="#quantum-mobile" class="section-anchor-link" aria-label="Link to Quantum Mobile section">#</a>
+          </div>
+
+          <p>
+            For researchers without immediate access to a physical supercomputing cluster, HPC Studio provides one-click integration with the <strong>Quantum Mobile Virtual Machine</strong> (curated by MARVEL and PSI).
+          </p>
+
+          <p>
+            Quantum Mobile delivers an Ubuntu Linux environment with pre-installed, pre-compiled, and verified scientific codes:
+          </p>
+
+          <ul>
+            <li><strong>Quantum ESPRESSO 7.3:</strong> <code>pw.x</code>, <code>ph.x</code>, <code>pp.x</code>, <code>neb.x</code> with OpenMPI support.</li>
+            <li><strong>Slurm Workload Manager:</strong> Local single-node queue running <code>slurmd</code> and <code>slurmctld</code> for testing submission scripts.</li>
+            <li><strong>Simulation Tools:</strong> Wannier90, Yambo, AiiDA, and full SSSP pseudopotential libraries.</li>
+          </ul>
+
+          <div class="admonition note">
+            <svg class="admonition-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <div class="admonition-body">
+              <span class="admonition-title">Connecting to Quantum Mobile</span>
+              <span>In HPC Studio, press <code>Ctrl+Shift+P</code> &gt; <code>HPC: Connect to Quantum Mobile VM</code>. The IDE will detect your local VirtualBox or Vagrant instance on port <code>2222</code> and establish an instant connection.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 5: QUANTUM ESPRESSO WORKFLOW
+             ===================================================================== -->
+        <section class="docs-section" id="quantum-espresso">
+          <div class="section-heading-cluster">
+            <h2>Quantum ESPRESSO Workflow</h2>
+            <a href="#quantum-espresso" class="section-anchor-link" aria-label="Link to Quantum ESPRESSO section">#</a>
+          </div>
+
+          <p>
+            HPC Studio features full semantic intelligence for Quantum ESPRESSO input and output files (<code>pw.x</code>, <code>cp.x</code>, <code>ph.x</code>). It validates namelists, flags obsolete keywords, suggests optimal cutoff energies, and provides an interactive 3D crystal preview of your unit cell.
+          </p>
+
+          <h3 id="qe-scf-relax">SCF &amp; Relax Calculations</h3>
+          <p>
+            Below is an example of an optimized self-consistent field (SCF) input file for Silicon in the diamond structure (FCC lattice). As you type this in HPC Studio, IntelliSense automatically auto-completes available namelist keys and flags syntax errors:
+          </p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>pw.scf.silicon.in</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">Fortran Namelist</span>
+                <button class="code-copy-btn" data-copy-target="#code-pw-scf" aria-label="Copy pw.scf.in code">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-pw-scf"><span class="tok-comment">&amp;CONTROL</span>
+  <span class="tok-prop">calculation</span>   = <span class="tok-string">'scf'</span>
+  <span class="tok-prop">restart_mode</span>  = <span class="tok-string">'from_scratch'</span>
+  <span class="tok-prop">prefix</span>        = <span class="tok-string">'silicon'</span>
+  <span class="tok-prop">outdir</span>        = <span class="tok-string">'./scratch/'</span>
+  <span class="tok-prop">pseudo_dir</span>    = <span class="tok-string">'./pseudo/'</span>
+  <span class="tok-prop">verbosity</span>     = <span class="tok-string">'high'</span>
+  <span class="tok-prop">tprnfor</span>       = <span class="tok-keyword">.true.</span>
+  <span class="tok-prop">tstress</span>       = <span class="tok-keyword">.true.</span>
+<span class="tok-comment">/</span>
+
+<span class="tok-comment">&amp;SYSTEM</span>
+  <span class="tok-prop">ibrav</span>         = <span class="tok-number">2</span>                   <span class="tok-comment">! Face-Centered Cubic (FCC)</span>
+  <span class="tok-prop">celldm(1)</span>     = <span class="tok-number">10.26</span>               <span class="tok-comment">! Lattice parameter in Bohr (5.43 Å)</span>
+  <span class="tok-prop">nat</span>           = <span class="tok-number">2</span>                   <span class="tok-comment">! Number of atoms in primitive basis</span>
+  <span class="tok-prop">ntyp</span>          = <span class="tok-number">1</span>                   <span class="tok-comment">! Number of distinct atomic species</span>
+  <span class="tok-prop">ecutwfc</span>       = <span class="tok-number">40.0</span>                <span class="tok-comment">! Kinetic energy cutoff for wavefunctions (Ry)</span>
+  <span class="tok-prop">ecutrho</span>       = <span class="tok-number">320.0</span>               <span class="tok-comment">! Kinetic energy cutoff for charge density (Ry)</span>
+  <span class="tok-prop">occupations</span>   = <span class="tok-string">'fixed'</span>
+<span class="tok-comment">/</span>
+
+<span class="tok-comment">&amp;ELECTRONS</span>
+  <span class="tok-prop">conv_thr</span>         = <span class="tok-number">1.0d-8</span>          <span class="tok-comment">! Convergence threshold for self-consistency</span>
+  <span class="tok-prop">mixing_beta</span>      = <span class="tok-number">0.7</span>             <span class="tok-comment">! Charge density mixing factor</span>
+  <span class="tok-prop">diagonalization</span>  = <span class="tok-string">'david'</span>         <span class="tok-comment">! Davidson iterative diagonalization</span>
+<span class="tok-comment">/</span>
+
+<span class="tok-keyword">ATOMIC_SPECIES</span>
+  Si  <span class="tok-number">28.0855</span>  Si.pbe-n-kjpaw_psl.1.0.0.UPF
+
+<span class="tok-keyword">ATOMIC_POSITIONS</span> (alat)
+  Si  <span class="tok-number">0.00000000</span>  <span class="tok-number">0.00000000</span>  <span class="tok-number">0.00000000</span>
+  Si  <span class="tok-number">0.25000000</span>  <span class="tok-number">0.25000000</span>  <span class="tok-number">0.25000000</span>
+
+<span class="tok-keyword">K_POINTS</span> (automatic)
+  <span class="tok-number">6</span> <span class="tok-number">6</span> <span class="tok-number">6</span>   <span class="tok-number">1</span> <span class="tok-number">1</span> <span class="tok-number">1</span></code></pre>
+          </div>
+
+          <h3 id="qe-pseudopotentials">UPF Pseudopotentials Library</h3>
+          <p>
+            Missing pseudopotentials cause over 60% of rookie DFT job crashes. HPC Studio solves this with an <strong>Integrated Pseudopotential Resolver</strong>:
+          </p>
+          <ul>
+            <li>Right-click any <code>.UPF</code> reference in your input file to inspect its header metadata (PAW vs. Ultrasoft vs. Norm-Conserving, exchange-correlation functional, valence electrons, suggested <code>ecutwfc</code> / <code>ecutrho</code> cutoffs).</li>
+            <li>Click <strong>"Fetch missing UPF from SSSP"</strong> to automatically download standard solid-state pseudopotentials directly into your cluster's <code>pseudo_dir</code>.</li>
+          </ul>
+
+          <h3 id="qe-crystal-viewer">3D Crystal Viewer</h3>
+          <p>
+            Whenever you open a <code>pw.x</code> input file, HPC Studio activates the <strong>3D Crystal View</strong> tab in the editor pane. Powered by high-efficiency WebGL:
+          </p>
+          <ul>
+            <li>Rotate, zoom, and inspect unit cells, supercells, and fractional atomic coordinates in real time.</li>
+            <li>Toggle periodic boundary conditions (1x1x1, 2x2x2, 3x3x3 replication).</li>
+            <li>Calculate interatomic bond distances and bond angles with a single click on any two atoms.</li>
+            <li>Export publication-quality raytraced PNGs directly to your project workspace.</li>
+          </ul>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 6: SLURM WORKLOAD MANAGER
+             ===================================================================== -->
+        <section class="docs-section" id="slurm">
+          <div class="section-heading-cluster">
+            <h2>Slurm Workload Manager</h2>
+            <a href="#slurm" class="section-anchor-link" aria-label="Link to Slurm section">#</a>
+          </div>
+
+          <p>
+            Slurm is the premier workload scheduler on top-500 supercomputers. HPC Studio bridges the gap between editing code and managing distributed HPC jobs through an integrated SBATCH generator, cluster resource explorer, and live queue telemetry.
+          </p>
+
+          <h3 id="slurm-sbatch">Interactive SBATCH Generator</h3>
+          <p>
+            Instead of manually calculating MPI ranks and OpenMP thread masks, press <code>Ctrl+Shift+P</code> &gt; <code>Slurm: Generate Batch Submission Script</code>. Choose your target partition, number of compute nodes, tasks per node, and walltime limit. HPC Studio outputs a hardened, production-ready script:
+          </p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>submit_qe_job.slurm</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">Slurm / Bash</span>
+                <button class="code-copy-btn" data-copy-target="#code-slurm-script" aria-label="Copy Slurm batch script">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-slurm-script"><span class="tok-comment">#!/bin/bash</span>
+<span class="tok-comment">#SBATCH --job-name=qe_silicon_scf</span>
+<span class="tok-comment">#SBATCH --partition=standard</span>
+<span class="tok-comment">#SBATCH --nodes=2</span>
+<span class="tok-comment">#SBATCH --ntasks-per-node=16</span>
+<span class="tok-comment">#SBATCH --cpus-per-task=4</span>
+<span class="tok-comment">#SBATCH --time=02:00:00</span>
+<span class="tok-comment">#SBATCH --output=slurm-%j.out</span>
+<span class="tok-comment">#SBATCH --error=slurm-%j.err</span>
+<span class="tok-comment">#SBATCH --mail-type=END,FAIL</span>
+
+<span class="tok-comment"># 1. Load Scientific Modules on Cluster</span>
+<span class="tok-func">module</span> purge
+<span class="tok-func">module</span> load intel/2023.2 mpi/openmpi-4.1.5 qe/7.3
+
+<span class="tok-comment"># 2. Configure Hybrid MPI/OpenMP Environment</span>
+<span class="tok-keyword">export</span> OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+<span class="tok-keyword">export</span> OMP_PLACES=cores
+<span class="tok-keyword">export</span> OMP_PROC_BIND=close
+
+<span class="tok-comment"># 3. Create Scratch Directory for Temporary Files</span>
+<span class="tok-keyword">export</span> SCRATCH_DIR=<span class="tok-string">"/tmp/scratch_${SLURM_JOB_ID}"</span>
+<span class="tok-func">mkdir</span> -p $SCRATCH_DIR
+
+<span class="tok-func">echo</span> <span class="tok-string">"Starting Quantum ESPRESSO job at $(date)"</span>
+<span class="tok-func">echo</span> <span class="tok-string">"Running on $SLURM_NNODES nodes with 32 total MPI ranks and $OMP_NUM_THREADS OpenMP threads/rank"</span>
+
+<span class="tok-comment"># 4. Launch pw.x with MPI process binding</span>
+srun --mpi=pmix pw.x -nk <span class="tok-number">4</span> -in pw.scf.silicon.in &gt; pw.scf.silicon.out
+
+<span class="tok-func">echo</span> <span class="tok-string">"Completed simulation with exit code $? at $(date)"</span></code></pre>
+          </div>
+
+          <h3 id="slurm-queue">Cluster Queue Monitoring</h3>
+          <p>
+            The <strong>Slurm Explorer</strong> in the Activity Bar displays real-time telemetry from your cluster:
+          </p>
+          <ul>
+            <li><strong>Live Jobs:</strong> View status (<code>RUNNING</code>, <code>PENDING</code>, <code>COMPLETING</code>, <code>FAILED</code>), elapsed walltime, priority ranking, and allocated compute nodes.</li>
+            <li><strong>One-Click Cancellation:</strong> Cancel runaway jobs or hung calculations with <code>scancel</code> directly from the UI.</li>
+            <li><strong>Output Log Streaming:</strong> Click any active job to stream its <code>slurm-%j.out</code> log file with automatic auto-scroll and error highlighting.</li>
+          </ul>
+
+          <h3 id="slurm-mpi-openmp">MPI / OpenMP Optimization</h3>
+          <p>
+            Quantum ESPRESSO supports multidimensional parallelization:
+          </p>
+          <ul>
+            <li><strong>Image parallelization (<code>-ni</code>):</strong> For NEB reaction barrier scans.</li>
+            <li><strong>k-point pool parallelization (<code>-nk</code>):</strong> Distribute k-point groups across disjoint MPI communicators for near-linear scaling.</li>
+            <li><strong>Plane-wave band parallelization (<code>-nb</code>):</strong> Efficient scaling for large metallic supercells.</li>
+          </ul>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 7: SIMULATION AI AGENTS (MCP)
+             ===================================================================== -->
+        <section class="docs-section" id="agents">
+          <div class="section-heading-cluster">
+            <h2>Simulation AI Agents</h2>
+            <a href="#agents" class="section-anchor-link" aria-label="Link to Simulation AI Agents section">#</a>
+          </div>
+
+          <p>
+            HPC Studio pioneers the application of <strong>Autonomous AI Simulation Agents</strong> in high-performance computing. Rather than functioning as generic chatbots, these agents run on the <strong>Model Context Protocol (MCP)</strong>, connecting reasoning models directly to domain-specific scientific tools, cluster schedulers, and output logs.
+          </p>
+
+          <h3 id="agents-convergence">Convergence Diagnostics</h3>
+          <p>
+            When an SCF calculation stalls or oscillates (charge sloshing), the agent inspects the tail of <code>pw.x</code> output in real time and provides an actionable diagnosis:
+          </p>
+
+          <div class="admonition warning">
+            <svg class="admonition-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <div class="admonition-body">
+              <span class="admonition-title">Agent Anomaly Detection: Charge Sloshing Observed</span>
+              <span>The agent detected negative charge density oscillations across iteration #42. Suggested fix: reduce <code>mixing_beta</code> from <code>0.7</code> to <code>0.3</code> and switch <code>diagonalization</code> to <code>'cg'</code>. Click <strong>[Apply Diff &amp; Resubmit to Slurm]</strong> to automate the fix.</span>
+            </div>
+          </div>
+
+          <h3 id="agents-mcp">Model Context Protocol (MCP)</h3>
+          <p>
+            Simulation agents interface with HPC Studio via standardized MCP server definitions in <code>.vscode/mcp-servers.json</code>:
+          </p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>.vscode/mcp-servers.json</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">JSON</span>
+                <button class="code-copy-btn" data-copy-target="#code-mcp-config" aria-label="Copy MCP server config">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-mcp-config">{
+  <span class="tok-prop">"mcpServers"</span>: {
+    <span class="tok-prop">"hpc-simulation-agent"</span>: {
+      <span class="tok-prop">"command"</span>: <span class="tok-string">"hpc-agent-server"</span>,
+      <span class="tok-prop">"args"</span>: [<span class="tok-string">"--workspace"</span>, <span class="tok-string">"${workspaceFolder}"</span>, <span class="tok-string">"--cluster"</span>, <span class="tok-string">"hpc-cluster-login01"</span>],
+      <span class="tok-prop">"env"</span>: {
+        <span class="tok-prop">"SLURM_PARTITION"</span>: <span class="tok-string">"standard"</span>,
+        <span class="tok-prop">"QE_ROOT"</span>: <span class="tok-string">"/opt/software/qe-7.3"</span>
+      },
+      <span class="tok-prop">"tools"</span>: [
+        <span class="tok-string">"slurm_submit_job"</span>,
+        <span class="tok-string">"slurm_check_queue"</span>,
+        <span class="tok-string">"qe_validate_input"</span>,
+        <span class="tok-string">"qe_parse_scf_convergence"</span>,
+        <span class="tok-string">"materials_project_lookup"</span>
+      ]
+    }
+  }
+}</code></pre>
+          </div>
+
+          <h3 id="agents-sweeps">Automated Parameter Sweeps</h3>
+          <p>
+            Instruct the simulation agent: <em>"Perform an energy cutoff convergence sweep from 30 Ry to 80 Ry in steps of 10 Ry on Silicon and plot total energy vs. ecutwfc."</em>
+          </p>
+          <div class="steps-workflow-list">
+            <div class="step-item">
+              <div class="step-num-badge">1</div>
+              <div class="step-body">
+                <div class="step-title">Template Generation</div>
+                <p>The agent generates 6 input variations with varying <code>ecutwfc</code> values.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num-badge">2</div>
+              <div class="step-body">
+                <div class="step-title">Batch Array Submission</div>
+                <p>The agent submits a Slurm job array (<code>--array=1-6</code>) to your remote cluster.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num-badge">3</div>
+              <div class="step-body">
+                <div class="step-title">Automated Synthesis &amp; Plotting</div>
+                <p>Upon completion, the agent parses total ground-state energies, verifies convergence within 1 mRy/atom, and renders an interactive SVG plot.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 8: API & EXTENSIBILITY
+             ===================================================================== -->
+        <section class="docs-section" id="api-grammars">
+          <div class="section-heading-cluster">
+            <h2>API &amp; Extensibility</h2>
+            <a href="#api-grammars" class="section-anchor-link" aria-label="Link to API section">#</a>
+          </div>
+
+          <p>
+            HPC Studio inherits the standard Visual Studio Code Extension API while exposing specialized high-performance scientific hooks under the <code>hpc</code> namespace.
+          </p>
+
+          <h3>Custom Language Grammars</h3>
+          <p>
+            HPC Studio ships with built-in TextMate grammars for Quantum ESPRESSO, Slurm batch directives, VASP (INCAR/POSCAR/KPOINTS), and LAMMPS input decks:
+          </p>
+          <ul>
+            <li><code>source.quantum-espresso</code>: Highlights namelists, cards, and scientific constants.</li>
+            <li><code>source.slurm</code>: Highlights <code>#SBATCH</code> pragmas with auto-validation of flag arguments.</li>
+            <li><code>source.cif</code>: Crystallographic Information File syntax highlighting.</li>
+          </ul>
+
+          <h3 id="api-extensions">Extension API</h3>
+          <p>
+            You can write custom extensions in TypeScript or JavaScript. Access the HPC Studio cluster manager through the API:
+          </p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>extension.ts</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">TypeScript</span>
+                <button class="code-copy-btn" data-copy-target="#code-api-ext" aria-label="Copy extension API code">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-api-ext"><span class="tok-keyword">import</span> * <span class="tok-keyword">as</span> vscode <span class="tok-keyword">from</span> <span class="tok-string">'vscode'</span>;
+<span class="tok-keyword">import</span> { hpc } <span class="tok-keyword">from</span> <span class="tok-string">'hpc-studio-api'</span>;
+
+<span class="tok-keyword">export function</span> <span class="tok-func">activate</span>(context: vscode.ExtensionContext) {
+  <span class="tok-keyword">const</span> submitCmd = vscode.commands.registerCommand(<span class="tok-string">'myPlugin.submitDFT'</span>, <span class="tok-keyword">async</span> () => {
+    <span class="tok-keyword">const</span> cluster = <span class="tok-keyword">await</span> hpc.clusters.getActiveCluster();
+    <span class="tok-keyword">if</span> (!cluster) {
+      vscode.window.showErrorMessage(<span class="tok-string">'No active HPC cluster connected.'</span>);
+      <span class="tok-keyword">return</span>;
+    }
+
+    <span class="tok-keyword">const</span> job = <span class="tok-keyword">await</span> cluster.slurm.submit({
+      scriptPath: <span class="tok-string">'submit_qe_job.slurm'</span>,
+      nodes: <span class="tok-number">2</span>,
+      tasksPerNode: <span class="tok-number">16</span>
+    });
+
+    vscode.window.showInformationMessage(<span class="tok-string">`Job ${job.id} submitted to ${cluster.name}!`</span>);
+  });
+
+  context.subscriptions.push(submitCmd);
+}</code></pre>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 9: FAQ & TROUBLESHOOTING
+             ===================================================================== -->
+        <section class="docs-section" id="faq">
+          <div class="section-heading-cluster">
+            <h2>FAQ &amp; Troubleshooting</h2>
+            <a href="#faq" class="section-anchor-link" aria-label="Link to FAQ section">#</a>
+          </div>
+
+          <div class="faq-accordion-list">
+            
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How do I resolve SSH host key verification or bastion timeout errors?</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                Ensure that you have generated a modern Ed25519 key pair (<code>ssh-keygen -t ed25519</code>) and copied your public key to both the bastion host and the internal cluster login node. In your <code>~/.ssh/config</code>, add <code>ServerAliveInterval 60</code> and <code>ServerAliveCountMax 5</code> to prevent aggressive supercomputer firewalls from severing idle SSH sessions.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Why is my SCF calculation failing to converge after 100 iterations?</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                SCF non-convergence in Quantum ESPRESSO typically stems from three causes:
+                <ol style="margin-top: 8px;">
+                  <li><strong>Charge sloshing:</strong> In small band-gap or metallic systems, reduce <code>mixing_beta</code> to <code>0.2</code> - <code>0.3</code> in <code>&amp;ELECTRONS</code>.</li>
+                  <li><strong>Unsuitable smearing:</strong> If your system is metallic, set <code>occupations = 'smearing'</code>, <code>smearing = 'mv'</code> (Marzari-Vanderbilt), and <code>degauss = 0.02</code>.</li>
+                  <li><strong>Diagonalization algorithm:</strong> Switch from Davidson to Conjugate Gradient (<code>diagonalization = 'cg'</code>).</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can HPC Studio run completely offline in air-gapped supercomputer enclaves?</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                Yes! HPC Studio is designed for national laboratory environments with air-gapped high-security networks. You can download the offline standalone <code>.tar.gz</code> bundle and the offline <code>.vsix</code> extension packages without needing active internet access.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How do I enable CUDA / OpenACC GPU acceleration in Quantum ESPRESSO?</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                When compiling or loading Quantum ESPRESSO built with NVIDIA NVHPC SDK (OpenACC / CUDA), set <code>#SBATCH --gpus-per-node=4</code> in your Slurm script and launch <code>pw.x</code> with one MPI task per GPU (e.g. <code>srun -n 4 pw.x ...</code>). HPC Studio's SBATCH Generator automatically detects available NVIDIA A100/H100/H200 partitions and configures GPU affinities.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Floating Back to Top Button -->
+    <button id="docs-back-to-top" class="docs-back-to-top" aria-label="Scroll back to top of documentation" title="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true">
+        <path d="M18 15l-6-6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- =========================================================================
+         3. SITE FOOTER (Matching index.html)
+         ========================================================================= -->
+    <footer class="site-footer-section" role="contentinfo">
+      <!-- Social row: Only GitHub -->
+      <div class="footer-social-row">
+        <div class="social-icons-cluster">
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" class="social-icon-btn" aria-label="HPC Studio GitHub Repository" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+
+        <!-- Official HPC Studio Arc Reactor Logo (links to index.html) -->
+        <a href="../" aria-label="HPC Studio Home">
+          <img src="../assets/icons/hpc-studio.svg" class="footer-brand-logo-right" alt="HPC Studio" width="26" height="26">
+        </a>
+      </div>
+
+      <!-- Legal & Resource links row -->
+      <div class="footer-legal-row">
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/issues" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Support / Issues</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/discussions" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Discussions</a>
+        <a href="../docs/" class="footer-legal-link">Documentation</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-legal-link">License (MIT)</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="footer-legal-link">GitHub Repo</a>
+      </div>
+
+      <!-- Copyright row -->
+      <div class="footer-copyright-row">
+        <span class="footer-copyright-text">&copy; 2026 HPC Studio Contributors. Built on Code OSS.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/theme.js"></script>
+  <script src="../js/docs.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

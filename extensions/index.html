@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extensions - HPC Studio | The Scientific IDE for Supercomputing</title>
+  <meta name="description" content="Discover scientific extensions for HPC Studio: Quantum ESPRESSO, Slurm workload managers, 3D molecular viewers, Python ASE, Modern Fortran, and high-performance MPI toolchains.">
+  <meta name="keywords" content="HPC Studio Extensions, Quantum ESPRESSO extension, Slurm extension, ASE Python, Fortran, Supercomputing IDE">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Extensions - HPC Studio">
+  <meta property="og:description" content="Supercharge your scientific workflow with community and official extensions built for HPC and materials science.">
+  <meta property="og:url" content="https://hpc-studio.dev/extensions/">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/docs.css">
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/hpc-studio.svg">
+  <style>
+    .extensions-page-hero {
+      padding: 60px 40px 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .extensions-page-title {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-headline);
+      margin-bottom: 16px;
+    }
+    .extensions-page-subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-body);
+      max-width: 800px;
+      margin: 0 auto 32px;
+    }
+    .extensions-grid-wrapper {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 40px;
+    }
+    .extensions-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .ext-showcase-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .ext-showcase-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-arc-cyan);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), 0 0 14px rgba(0, 210, 255, 0.1);
+    }
+    [data-theme="light"] .ext-showcase-card {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    [data-theme="light"] .ext-showcase-card:hover {
+      border-color: #0078D4;
+      background: #F8FAFC;
+      box-shadow: 0 8px 24px rgba(0, 120, 212, 0.12);
+    }
+    .ext-showcase-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .ext-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-light);
+    }
+    [data-theme="light"] .ext-icon-circle {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
+    .ext-title-col {
+      flex: 1;
+    }
+    .ext-title-col h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-headline);
+    }
+    .ext-publisher {
+      font-size: 12px;
+      color: var(--text-body);
+    }
+    .ext-showcase-card p {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-body);
+      flex: 1;
+    }
+    .ext-tags-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .ext-pill {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-body);
+      background: var(--bg-action-link);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+    [data-theme="light"] .ext-pill {
+      background: #F1F5F9;
+      color: #0F172A;
+      border-color: #CBD5E1;
+      font-weight: 600;
+    }
+    @media (max-width: 960px) {
+      .extensions-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .extensions-grid-wrapper,
+      .extensions-page-hero {
+        padding: 40px 20px;
+      }
+      .extensions-page-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <!-- Main Navigation (74px) -->
+    <header class="main-navigation" role="banner">
+      <div class="nav-links-cluster">
+        <a href="../" class="brand-container" aria-label="HPC Studio Home">
+          <img src="../assets/icons/hpc-studio.svg" class="brand-logo-svg" alt="HPC Studio Logo" width="26" height="26">
+          <span class="brand-name">HPC Studio</span>
+        </a>
+
+        <nav class="site-links" aria-label="Main Navigation">
+          <a href="../docs/" class="nav-link-item">Docs</a>
+          <a href="../features/" class="nav-link-item">Features</a>
+          <a href="../extensions/" class="nav-link-item active" aria-current="page">Extensions</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio/releases" target="_blank" rel="noopener noreferrer" class="nav-link-item">Releases</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="nav-link-item">GitHub</a>
+        </nav>
+      </div>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="theme-toggle-action" title="Toggle color theme" aria-label="Toggle theme">
+          <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+        </button>
+
+        <a href="../#downloads-matrix" class="nav-download-button">
+          <span class="btn-main-text">Download</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Extensions Hero -->
+    <section class="extensions-page-hero">
+      <h1 class="extensions-page-title">Scientific Extensions Marketplace</h1>
+      <p class="extensions-page-subtitle">
+        Extend HPC Studio with specialized tools for computational chemistry, condensed matter physics, molecular dynamics, and supercomputing resource schedulers. Fully compatible with Open VSX and VS Code extension ecosystems.
+      </p>
+    </section>
+
+    <!-- 9 Featured Extensions Grid -->
+    <section class="extensions-grid-wrapper" aria-label="Featured Scientific Extensions">
+      <div class="extensions-cards-grid">
+        
+        <!-- Ext 1: Quantum ESPRESSO -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #F59E0B;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(90 12 12)"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Quantum ESPRESSO</h3>
+              <span class="ext-publisher">by HPC Studio Team &bull; Built-in</span>
+            </div>
+          </div>
+          <p>PWscf, PHonon, and CP namelist IntelliSense, live syntax validation, and automated UPF pseudopotential resolution.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">DFT</span>
+            <span class="ext-pill">PWscf</span>
+            <span class="ext-pill">SSSP</span>
+          </div>
+        </div>
+
+        <!-- Ext 2: Slurm Workload Manager -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #10B981;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Slurm Manager</h3>
+              <span class="ext-publisher">by HPC Studio Team &bull; Built-in</span>
+            </div>
+          </div>
+          <p>Cluster queue monitoring, sbatch script generator, live job cancellation, and real-time remote output log streaming.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">Slurm</span>
+            <span class="ext-pill">HPC</span>
+            <span class="ext-pill">SBATCH</span>
+          </div>
+        </div>
+
+        <!-- Ext 3: 3D Crystal Visualizer -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #00D2FF;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>3D Crystal Visualizer</h3>
+              <span class="ext-publisher">by HPC Studio Team &bull; Built-in</span>
+            </div>
+          </div>
+          <p>WebGL-accelerated atomic lattice viewer. Measure interatomic bonds, replicate periodic boundary supercells, and export PNGs.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">WebGL</span>
+            <span class="ext-pill">CIF</span>
+            <span class="ext-pill">Crystallography</span>
+          </div>
+        </div>
+
+        <!-- Ext 4: Python Scientific -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #38BDF8;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><path d="M12 2a5 5 0 0 1 5 5v3H7V7a5 5 0 0 1 5-5z"/><path d="M12 22a5 5 0 0 1-5-5v-3h10v3a5 5 0 0 1-5 5z"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Python Scientific</h3>
+              <span class="ext-publisher">by Community</span>
+            </div>
+          </div>
+          <p>Complete language server and autocomplete support for ASE (Atomic Simulation Environment), Pymatgen, and NumPy.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">Python</span>
+            <span class="ext-pill">ASE</span>
+            <span class="ext-pill">Pymatgen</span>
+          </div>
+        </div>
+
+        <!-- Ext 5: Modern Fortran -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #A855F7;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Modern Fortran</h3>
+              <span class="ext-publisher">by Fortran Community</span>
+            </div>
+          </div>
+          <p>F90, F95, and F2008 language server, syntax checking with gfortran / ifx, and symbol navigation across scientific modules.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">Fortran</span>
+            <span class="ext-pill">F90</span>
+            <span class="ext-pill">Intel OneAPI</span>
+          </div>
+        </div>
+
+        <!-- Ext 6: Remote - SSH -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #14B8A6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Remote - SSH Supercomputing</h3>
+              <span class="ext-publisher">by Code OSS</span>
+            </div>
+          </div>
+          <p>Connect directly to remote login nodes or compute nodes through jump hosts. Run tasks directly in remote environments.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">SSH</span>
+            <span class="ext-pill">Remote</span>
+            <span class="ext-pill">Tunnel</span>
+          </div>
+        </div>
+
+        <!-- Ext 7: Jupyter Notebooks -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #EC4899;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Jupyter Notebooks</h3>
+              <span class="ext-publisher">by Project Jupyter</span>
+            </div>
+          </div>
+          <p>Interactive Python data post-processing, band structure plotting, and density-of-states (DOS) curve visualization.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">Notebook</span>
+            <span class="ext-pill">Matplotlib</span>
+            <span class="ext-pill">Analysis</span>
+          </div>
+        </div>
+
+        <!-- Ext 8: C/C++ Supercomputing Toolchain -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #6366F1;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>C/C++ MPI &amp; CUDA</h3>
+              <span class="ext-publisher">by LLVM Community</span>
+            </div>
+          </div>
+          <p>Clangd-based language server with OpenMP pragmas, OpenMPI headers, and NVIDIA CUDA kernel highlighting.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">MPI</span>
+            <span class="ext-pill">OpenMP</span>
+            <span class="ext-pill">CUDA</span>
+          </div>
+        </div>
+
+        <!-- Ext 9: Materials Project API -->
+        <div class="ext-showcase-card">
+          <div class="ext-showcase-header">
+            <div class="ext-icon-circle" style="color: #EAB308;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="ext-title-col">
+              <h3>Materials Project API</h3>
+              <span class="ext-publisher">by Materials Project</span>
+            </div>
+          </div>
+          <p>Search over 150,000 crystal structures and thermodynamic phase diagrams directly from the Command Palette.</p>
+          <div class="ext-tags-row">
+            <span class="ext-pill">API</span>
+            <span class="ext-pill">Materials</span>
+            <span class="ext-pill">Database</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer-section" role="contentinfo">
+      <div class="footer-social-row">
+        <div class="footer-social-links">
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub Repository">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <a href="../" aria-label="HPC Studio Home">
+          <img src="../assets/icons/hpc-studio.svg" class="footer-brand-logo-right" alt="HPC Studio" width="26" height="26">
+        </a>
+      </div>
+
+      <div class="footer-legal-row">
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/issues" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Support / Issues</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/discussions" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Discussions</a>
+        <a href="../docs/" class="footer-legal-link">Documentation</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-legal-link">License (MIT)</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="footer-legal-link">GitHub Repo</a>
+      </div>
+
+      <div class="footer-copyright-row">
+        <span class="footer-copyright-text">&copy; 2026 HPC Studio Contributors. Built on Code OSS.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Toggle & Scripts -->
+  <script src="../js/theme.js"></script>
+</body>
+</html>
