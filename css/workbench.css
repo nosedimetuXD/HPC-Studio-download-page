@@ -1,0 +1,638 @@
+/**
+ * HPC Studio Design System - Workbench Frame
+ * Ultra-realistic Code OSS / VS Code workbench preview with 
+ * Activity Bar, Slurm Queue, Quantum ESPRESSO syntax, 3D Crystal Visualizer, and Terminal.
+ */
+
+/* ==========================================================================
+   1. Workbench Outer Container & Frame
+   ========================================================================== */
+
+.workbench-window {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  background-color: var(--wb-editor-bg);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 210, 255, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.workbench-window:hover {
+  border-color: var(--color-primary-border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 70px rgba(0, 210, 255, 0.25);
+}
+
+/* ==========================================================================
+   2. Window Titlebar
+   ========================================================================== */
+
+.wb-titlebar {
+  height: 38px;
+  background-color: var(--wb-titlebar-bg);
+  border-bottom: 1px solid var(--wb-titlebar-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  user-select: none;
+}
+
+.wb-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wb-control-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: opacity var(--transition-fast);
+}
+
+.wb-control-close { background-color: #ff5f56; }
+.wb-control-minimize { background-color: #ffbd2e; }
+.wb-control-maximize { background-color: #27c93f; }
+
+.wb-window-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  color: var(--wb-titlebar-text);
+  font-weight: 500;
+}
+
+.wb-window-title .wb-cluster-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  background-color: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  border-radius: var(--radius-xs);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.wb-titlebar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+}
+
+.wb-titlebar-btn {
+  background: transparent;
+  border: none;
+  color: var(--wb-titlebar-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border-radius: var(--radius-xs);
+}
+
+.wb-titlebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   3. Workbench Main Area (Activity Bar + Sidebar + Editor Split)
+   ========================================================================== */
+
+.wb-body {
+  display: flex;
+  height: 600px;
+  background-color: var(--wb-editor-bg);
+  overflow: hidden;
+}
+
+/* Activity Bar (Far Left Strip) */
+.wb-activitybar {
+  width: 50px;
+  background-color: var(--wb-activitybar-bg);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  flex-shrink: 0;
+}
+
+.wb-activity-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.wb-activity-item {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wb-activitybar-inactive);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.wb-activity-item:hover {
+  color: var(--wb-activitybar-active);
+}
+
+.wb-activity-item.active {
+  color: var(--wb-activitybar-active);
+}
+
+.wb-activity-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background-color: var(--wb-activitybar-badge);
+  box-shadow: 0 0 8px var(--wb-activitybar-badge);
+}
+
+.wb-activity-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  background-color: var(--color-slurm);
+  color: #040711;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-full);
+  line-height: 1;
+}
+
+.wb-activity-item svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Sidebar (Clusters & Slurm Queue) */
+.wb-sidebar {
+  width: 230px;
+  background-color: var(--wb-sidebar-bg);
+  border-right: 1px solid var(--wb-sidebar-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-size: 0.82rem;
+}
+
+.wb-sidebar-header {
+  padding: 0.65rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--wb-sidebar-header);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.wb-sidebar-section {
+  padding: 0.5rem 0;
+}
+
+.wb-sidebar-title {
+  padding: 0.35rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.wb-cluster-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.wb-cluster-row:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+.wb-cluster-row.active {
+  background-color: rgba(0, 210, 255, 0.08);
+  color: var(--color-primary);
+}
+
+.wb-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-slurm);
+  box-shadow: 0 0 6px var(--color-slurm);
+}
+
+.wb-status-dot.pending {
+  background-color: var(--color-warning);
+  box-shadow: 0 0 6px var(--color-warning);
+}
+
+.wb-slurm-job-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.wb-slurm-job-item:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.wb-job-badge-running {
+  color: var(--color-slurm);
+  font-weight: 600;
+}
+
+.wb-job-badge-pending {
+  color: var(--color-warning);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   4. Editor Split View (Code Editor + 3D Visualizer)
+   ========================================================================== */
+
+.wb-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--wb-editor-bg);
+}
+
+/* Tabs Bar */
+.wb-tabs-bar {
+  height: 36px;
+  background-color: var(--wb-tab-bg-inactive);
+  border-bottom: 1px solid var(--wb-tab-border);
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+}
+
+.wb-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  background-color: var(--wb-tab-bg-inactive);
+  border-right: 1px solid var(--wb-tab-border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.wb-tab:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.wb-tab.active {
+  background-color: var(--wb-tab-bg-active);
+  color: var(--text-primary);
+  border-top: 2px solid var(--wb-tab-active-top-border);
+}
+
+.wb-tab-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.wb-tab-close {
+  opacity: 0.6;
+  font-size: 0.75rem;
+  border-radius: var(--radius-xs);
+  padding: 1px 3px;
+}
+
+.wb-tab-close:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Split Editor Body */
+.wb-editor-split {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  overflow: hidden;
+}
+
+/* Left Pane: Code Editor with Line Numbers */
+.wb-code-pane {
+  background-color: var(--wb-editor-bg);
+  border-right: 1px solid var(--border-subtle);
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  padding: 0.75rem 0;
+  display: flex;
+}
+
+.wb-line-numbers {
+  width: 44px;
+  text-align: right;
+  padding-right: 14px;
+  color: var(--wb-editor-line-number);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.wb-code-lines {
+  flex: 1;
+  padding-right: 1rem;
+  white-space: pre;
+  color: var(--text-primary);
+}
+
+/* Syntax Highlighting Classes */
+.token-namelist { color: var(--syntax-qe-namelist); font-weight: 700; }
+.token-card { color: var(--syntax-qe-card); font-weight: 700; }
+.token-keyword { color: var(--syntax-keyword); }
+.token-var { color: var(--syntax-variable); }
+.token-string { color: var(--syntax-string); }
+.token-number { color: var(--syntax-number); }
+.token-comment { color: var(--syntax-comment); font-style: italic; }
+.token-operator { color: var(--syntax-operator); }
+.token-slurm-param { color: var(--syntax-slurm-param); font-weight: 600; }
+
+/* Right Pane: 3D Crystal Visualizer */
+.wb-crystal-pane {
+  background: radial-gradient(circle at 50% 50%, #0d1629 0%, #060a15 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.wb-crystal-toolbar {
+  height: 32px;
+  background-color: rgba(6, 10, 20, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.75rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.wb-crystal-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wb-tool-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+}
+
+.wb-tool-btn.active,
+.wb-tool-btn:hover {
+  background-color: var(--color-primary-subtle);
+  border-color: var(--color-primary-border);
+  color: var(--color-primary);
+}
+
+.wb-crystal-viewport {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stylized Animated Silicon Lattice SVG / Canvas */
+.crystal-lattice-svg {
+  width: 82%;
+  height: 82%;
+  filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.35));
+}
+
+.lattice-node {
+  fill: #00d2ff;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  transition: r var(--transition-fast), fill var(--transition-fast);
+}
+
+.lattice-node-alt {
+  fill: #38bdf8;
+  stroke: #a5d6ff;
+  stroke-width: 1.5;
+}
+
+.lattice-bond {
+  stroke: rgba(0, 210, 255, 0.4);
+  stroke-width: 2;
+  stroke-dasharray: 4 2;
+}
+
+.lattice-box {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1;
+  fill: none;
+}
+
+.crystal-meta-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  background-color: rgba(4, 7, 17, 0.75);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.crystal-meta-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.crystal-meta-key {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   5. Bottom Terminal & Output Panel
+   ========================================================================== */
+
+.wb-bottom-panel {
+  height: 160px;
+  background-color: var(--wb-panel-bg);
+  border-top: 1px solid var(--wb-panel-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.wb-panel-tabs {
+  height: 28px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.wb-panel-tab {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.wb-panel-tab.active {
+  color: var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.wb-panel-badge {
+  background-color: var(--color-slurm);
+  color: #040711;
+  font-size: 0.6rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--radius-full);
+}
+
+.wb-terminal-content {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  overflow-y: auto;
+}
+
+.term-line {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.term-prompt {
+  color: var(--color-slurm);
+  font-weight: 600;
+}
+
+.term-path {
+  color: var(--color-primary);
+}
+
+.term-cmd {
+  color: #ffffff;
+}
+
+.term-output {
+  color: var(--text-secondary);
+}
+
+.term-success {
+  color: var(--color-slurm);
+}
+
+/* ==========================================================================
+   6. Workbench Status Bar
+   ========================================================================== */
+
+.wb-statusbar {
+  height: 24px;
+  background-color: var(--wb-statusbar-bg);
+  color: var(--wb-statusbar-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.75rem;
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+.wb-status-left,
+.wb-status-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.wb-status-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  opacity: 0.95;
+}
+
+.wb-status-item:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xs);
+  padding: 0 4px;
+}
+
+.wb-status-remote-badge {
+  background-color: #0369a1;
+  padding: 0 0.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+}

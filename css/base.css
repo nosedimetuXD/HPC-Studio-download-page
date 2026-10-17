@@ -1,0 +1,322 @@
+/**
+ * HPC Studio Design System - Base Styles & Reset
+ * Reset, fluid typography scale, and layout foundations
+ */
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1.5rem);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+}
+
+/* Background Cosmic Mesh & Grid Pattern */
+.bg-cosmic-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-canvas);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 90% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 64px 64px, 64px 64px;
+}
+
+[data-theme="light"] .bg-cosmic-grid {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 90% 40%, rgba(5, 150, 105, 0.04) 0%, transparent 50%),
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+/* Selection Color */
+::selection {
+  background-color: rgba(0, 210, 255, 0.25);
+  color: #ffffff;
+}
+
+[data-theme="light"] ::selection {
+  background-color: rgba(2, 132, 199, 0.25);
+  color: #0f172a;
+}
+
+/* Accessible Focus Outlines */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* Media Elements */
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-glow);
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+}
+
+h4 {
+  font-size: 1.35rem;
+}
+
+h5 {
+  font-size: 1.15rem;
+}
+
+h6 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+p.lead {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 44rem;
+}
+
+small {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+strong, b {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Text Gradient Utilities */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #ffffff 20%, #00d2ff 85%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .text-gradient-cyan {
+  background: linear-gradient(135deg, #0f172a 30%, #0284c7 90%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-slurm {
+  background: linear-gradient(135deg, #10b981 0%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Code & Monospace Stacks */
+code, kbd, pre, samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+code:not(pre code) {
+  padding: 0.2em 0.45em;
+  background-color: var(--color-primary-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  color: var(--color-primary);
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.5em;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--border-glass);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.8em;
+  color: var(--text-secondary);
+}
+
+/* Containers and Layout Grids */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.section-padding-sm {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Flex & Grid Helpers */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.gap-4 { gap: 2rem; }
+.gap-6 { gap: 3rem; }
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Section Header Styles */
+.section-header {
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-subtle);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.section-tag-slurm {
+  background-color: var(--color-slurm-subtle);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--color-slurm);
+}

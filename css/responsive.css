@@ -1,0 +1,301 @@
+/**
+ * HPC Studio Design System - Responsive & Mobile Layouts
+ * Media queries, hamburger navigation, responsive workbench, and mobile adaptations.
+ */
+
+/* ==========================================================================
+   1. Hamburger Menu & Mobile Drawer
+   ========================================================================== */
+
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: calc(var(--z-nav) + 10);
+  transition: all var(--transition-fast);
+}
+
+.mobile-menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-glass);
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: transform var(--transition-normal), opacity var(--transition-fast);
+}
+
+.mobile-menu-toggle.open .hamburger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-menu-toggle.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.open .hamburger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 82%;
+  max-width: 380px;
+  height: 100vh;
+  background-color: var(--bg-surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid var(--border-glass);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+  z-index: var(--z-nav);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--header-height) + 1.5rem) 2rem 2rem 2rem;
+  transition: right var(--transition-slow);
+  overflow-y: auto;
+}
+
+.mobile-nav-drawer.open {
+  right: 0;
+}
+
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(4, 7, 17, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: calc(var(--z-nav) - 1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.mobile-nav-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   2. Breakpoint: Laptops & Tablets (< 1024px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .wb-body {
+    height: 520px;
+  }
+
+  .wb-sidebar {
+    width: 200px;
+  }
+}
+
+/* ==========================================================================
+   3. Breakpoint: Tablets (< 860px)
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Workbench Tablet Adjustments */
+  .wb-sidebar {
+    display: none;
+  }
+
+  .wb-editor-split {
+    grid-template-columns: 1fr;
+  }
+
+  .wb-crystal-pane {
+    display: none;
+  }
+
+  .wb-body {
+    height: 440px;
+  }
+
+  .metrics-strip {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.75rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* ==========================================================================
+   4. Breakpoint: Mobile Viewports (< 640px)
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .container,
+  .container-wide,
+  .container-narrow {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h1 {
+    font-size: 2.15rem;
+  }
+
+  h2 {
+    font-size: 1.65rem;
+  }
+
+  p.lead {
+    font-size: 1.05rem;
+  }
+
+  /* Workbench Mobile Adjustments */
+  .wb-window {
+    border-radius: var(--radius-md);
+  }
+
+  .wb-activitybar {
+    width: 42px;
+  }
+
+  .wb-activity-item {
+    height: 36px;
+  }
+
+  .wb-activity-item svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .wb-code-pane {
+    font-size: 0.74rem;
+    padding: 0.5rem 0;
+  }
+
+  .wb-line-numbers {
+    width: 32px;
+    padding-right: 8px;
+  }
+
+  .wb-window-title .wb-cluster-tag {
+    display: none;
+  }
+
+  .wb-titlebar {
+    height: 34px;
+    padding: 0 0.65rem;
+  }
+
+  .wb-statusbar {
+    font-size: 0.62rem;
+    padding: 0 0.5rem;
+  }
+
+  .wb-status-right .wb-status-item:not(:first-child) {
+    display: none;
+  }
+
+  .wb-bottom-panel {
+    height: 120px;
+  }
+
+  .wb-terminal-content {
+    font-size: 0.68rem;
+    padding: 0.4rem 0.65rem;
+  }
+
+  /* Buttons & CTAs */
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* Download Matrix */
+  .download-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .matrix-card {
+    padding: 1.5rem;
+  }
+
+  .metrics-strip {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .metric-value {
+    font-size: 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
