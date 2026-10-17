@@ -13,36 +13,36 @@
     linux: {
       name: 'Linux',
       badge: 'Linux (.deb / x64)',
-      filename: `hpc-studio_${RELEASE_TAG.replace('v', '')}_amd64.deb`,
-      url: `${BASE_URL}/hpc-studio_${RELEASE_TAG.replace('v', '')}_amd64.deb`,
+      filename: 'hpc-studio_1.143.0_amd64.deb',
+      url: `${BASE_URL}/hpc-studio_1.143.0_amd64.deb`,
       icon: 'linux'
     },
     windows: {
       name: 'Windows',
-      badge: 'Windows (x64 Installer)',
-      filename: `HPC-Studio-Setup-${RELEASE_TAG.replace('v', '')}.exe`,
-      url: `${BASE_URL}/HPC-Studio-Setup-${RELEASE_TAG.replace('v', '')}.exe`,
+      badge: 'Windows (Installer / x64)',
+      filename: 'hpc-studio-1.143.0-setup.exe',
+      url: `${BASE_URL}/hpc-studio-1.143.0-setup.exe`,
       icon: 'windows'
     },
     macArm: {
       name: 'macOS (Apple Silicon)',
-      badge: 'macOS (Apple Silicon)',
-      filename: `HPC-Studio-${RELEASE_TAG.replace('v', '')}-arm64.dmg`,
-      url: `${BASE_URL}/HPC-Studio-${RELEASE_TAG.replace('v', '')}-arm64.dmg`,
+      badge: 'macOS (Apple Silicon / arm64)',
+      filename: 'hpc-studio-darwin-arm64-1.143.0.zip',
+      url: `${BASE_URL}/hpc-studio-darwin-arm64-1.143.0.zip`,
       icon: 'apple'
     },
     macIntel: {
       name: 'macOS (Intel)',
-      badge: 'macOS (Intel x64)',
-      filename: `HPC-Studio-${RELEASE_TAG.replace('v', '')}-x64.dmg`,
-      url: `${BASE_URL}/HPC-Studio-${RELEASE_TAG.replace('v', '')}-x64.dmg`,
+      badge: 'macOS (Intel / x64)',
+      filename: 'hpc-studio-darwin-x64-1.143.0.zip',
+      url: `${BASE_URL}/hpc-studio-darwin-x64-1.143.0.zip`,
       icon: 'apple'
     },
     fallback: {
       name: 'All Platforms',
       badge: 'Download for Linux (.deb)',
-      filename: `hpc-studio_${RELEASE_TAG.replace('v', '')}_amd64.deb`,
-      url: `${BASE_URL}/hpc-studio_${RELEASE_TAG.replace('v', '')}_amd64.deb`,
+      filename: 'hpc-studio_1.143.0_amd64.deb',
+      url: `${BASE_URL}/hpc-studio_1.143.0_amd64.deb`,
       icon: 'download'
     }
   };
