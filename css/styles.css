@@ -1591,9 +1591,12 @@ button {
   color: var(--color-arc-cyan);
 }
 
-.dl-platform-icon-box svg {
+.dl-platform-icon-box svg,
+.dl-platform-icon-box img {
   width: 28px;
   height: 28px;
+  object-fit: contain;
+  display: block;
 }
 
 .dl-platform-title {
