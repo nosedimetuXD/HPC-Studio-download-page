@@ -7,7 +7,7 @@
   'use strict';
 
   const THEME_STORAGE_KEY = 'hpc-studio-theme';
-  const THEMES = ['dark', 'light', 'high-contrast'];
+  const THEMES = ['dark', 'light'];
 
   function getSavedTheme() {
     return localStorage.getItem(THEME_STORAGE_KEY) || 'dark';
@@ -25,18 +25,16 @@
       btn.setAttribute('aria-pressed', val === theme ? 'true' : 'false');
     });
 
-    // Update theme toggle icon if single button
+    // Update theme toggle icon between Moon and Sun
     const toggleIcon = document.getElementById('theme-toggle-icon');
     if (toggleIcon) {
-      if (theme === 'dark') toggleIcon.textContent = '🌙';
-      else if (theme === 'light') toggleIcon.textContent = '☀️';
-      else toggleIcon.textContent = '👁️';
+      toggleIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
     }
   }
 
   function cycleTheme() {
     const current = getSavedTheme();
-    const next = current === 'dark' ? 'light' : current === 'light' ? 'high-contrast' : 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
     applyTheme(next);
   }
 
