@@ -511,6 +511,34 @@ hpc-studio</code></pre>
 ./bin/hpc-studio</code></pre>
           </div>
 
+          <h3>Arch Linux / Manjaro / EndeavourOS</h3>
+          <p>You can run the portable tarball directly, or convert the <code>.deb</code> package into a native Arch package using <code>debtap</code>:</p>
+
+          <div class="code-snippet-box">
+            <div class="code-header-bar">
+              <div class="code-file-title">
+                <span>Arch Linux (Terminal)</span>
+              </div>
+              <div class="code-actions-group">
+                <span class="code-lang-badge">Shell</span>
+                <button class="code-copy-btn" data-copy-target="#code-install-arch" aria-label="Copy Arch Linux commands">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+            <pre><code id="code-install-arch"><span class="tok-comment"># Option A: Portable installation into /opt</span>
+<span class="tok-func">tar</span> -xvf hpc-studio-linux-x64-1.143.0.tar.gz
+<span class="tok-func">sudo</span> mv hpc-studio-linux-x64 /opt/hpc-studio
+<span class="tok-func">sudo</span> ln -sf /opt/hpc-studio/bin/hpc-studio /usr/local/bin/hpc-studio
+hpc-studio
+
+<span class="tok-comment"># Option B: Convert .deb to native pacman package via debtap</span>
+<span class="tok-func">yay</span> -S debtap &amp;&amp; <span class="tok-func">sudo</span> debtap -u
+debtap hpc-studio_1.143.0_amd64.deb
+<span class="tok-func">sudo</span> pacman -U hpc-studio-1.143.0-1-x86_64.pkg.tar.zst</code></pre>
+          </div>
+
           <h3>macOS &amp; Windows (WSL2)</h3>
           <p>
             <strong>macOS:</strong> Download the Universal <code>.dmg</code> or <code>.zip</code>. Drag HPC Studio into your <code>/Applications</code> folder. Both Apple Silicon (M1/M2/M3/M4) and Intel architectures are natively supported.
