@@ -570,6 +570,92 @@ button {
   50% { opacity: 0.4; transform: scale(1.3); }
 }
 
+.wb-activity-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+/* Primary Sidebar: File & Cluster Explorer */
+.wb-sidebar {
+  width: 210px;
+  background: var(--wb-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  user-select: none;
+  font-size: 12px;
+  overflow-y: auto;
+}
+
+.wb-sidebar-title {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.wb-tree-section {
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wb-tree-header {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-body);
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wb-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px 3px 20px;
+  color: var(--text-title);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.1s;
+  white-space: nowrap;
+}
+
+.wb-tree-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.wb-tree-item.active {
+  background: rgba(0, 210, 255, 0.14);
+  color: #FFFFFF;
+}
+
+.wb-tree-item.nested {
+  padding-left: 32px;
+}
+
+.wb-status-dot-sm {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-slurm-green);
+  display: inline-block;
+}
+
 /* Main Content Area in Workbench */
 .wb-main-content {
   flex: 1;
@@ -636,7 +722,8 @@ button {
 
 .code-editor-pane {
   flex: 1;
-  padding: 16px;
+  display: flex;
+  flex-direction: row;
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.6;
@@ -645,7 +732,26 @@ button {
   overflow-y: auto;
 }
 
-.code-editor-pane pre {
+.editor-line-gutter {
+  width: 44px;
+  padding: 16px 8px 16px 0;
+  text-align: right;
+  color: #4B5563;
+  user-select: none;
+  background: var(--wb-editor);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.editor-code-body {
+  flex: 1;
+  padding: 16px 16px 16px 12px;
+  overflow-x: auto;
+}
+
+.editor-code-body pre {
   margin: 0;
   font-family: inherit;
 }
@@ -748,8 +854,86 @@ button {
   line-height: 1.5;
 }
 
+#wb-terminal-drawer {
+  background: #090B0E;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
 #wb-terminal-drawer.collapsed {
   display: none !important;
+}
+
+.terminal-tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  padding: 0 12px;
+  background: #111418;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 11px;
+  user-select: none;
+}
+
+.terminal-tab-group {
+  display: flex;
+  gap: 16px;
+  color: var(--text-body);
+}
+
+.terminal-tab-item {
+  cursor: pointer;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.terminal-tab-item.active {
+  color: #FFFFFF;
+  border-bottom: 2px solid var(--color-arc-cyan);
+}
+
+.terminal-tab-badge {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0 4px;
+  border-radius: 8px;
+  font-size: 9px;
+}
+
+.terminal-actions-group {
+  display: flex;
+  gap: 10px;
+  color: var(--text-body);
+  font-size: 11px;
+}
+
+.terminal-actions-group span {
+  cursor: pointer;
+}
+
+.terminal-body-content {
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+/* Status Bar Remote Indicator */
+.wb-remote-pill {
+  background: var(--color-arc-cyan);
+  color: #040711;
+  font-weight: 700;
+  padding: 0 8px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: -12px;
+  font-size: 11px;
 }
 
 /* Workbench Bottom Status Bar */
@@ -1600,6 +1784,7 @@ button {
   .extensions-row { flex-direction: column; }
   .extension-card-item { width: 100%; }
   .downloads-grid-4col { width: 100%; flex-direction: column; }
+  .wb-sidebar { display: none; }
   .language-row { flex-wrap: wrap; }
   .site-links { display: none; }
 }

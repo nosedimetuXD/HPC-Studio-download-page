@@ -36,15 +36,27 @@
         }
 
         // Trigger resize event for canvas if 3D viewer is selected
-        if (targetTabId === 'crystal-3d') {
-          window.dispatchEvent(new Event('resize'));
-        }
+        // Update tree item active state if matching tab
+        document.querySelectorAll('.wb-tree-item').forEach((ti) => {
+          const matchTab = ti.getAttribute('data-tab-select');
+          ti.classList.toggle('active', matchTab === targetTabId);
+        });
+      });
+    });
+
+    // Explorer tree item click to switch tabs
+    document.querySelectorAll('[data-tab-select]').forEach((item) => {
+      item.addEventListener('click', () => {
+        const tabId = item.getAttribute('data-tab-select');
+        const tabBtn = document.querySelector(`.wb-tab[data-tab="${tabId}"]`);
+        if (tabBtn) tabBtn.click();
       });
     });
 
     // Terminal Drawer Toggle
+    const closeTermBtn = document.getElementById('wb-close-terminal-btn');
     if (termToggle && termDrawer) {
-      termToggle.addEventListener('click', () => {
+      const toggleFn = () => {
         const isCollapsed = termDrawer.classList.toggle('collapsed');
         termToggle.setAttribute('aria-expanded', !isCollapsed);
         const icon = termToggle.querySelector('.codicon');
@@ -53,7 +65,12 @@
         } else {
           termToggle.textContent = isCollapsed ? '▲ Terminal' : '▼ Terminal';
         }
-      });
+      };
+
+      termToggle.addEventListener('click', toggleFn);
+      if (closeTermBtn) {
+        closeTermBtn.addEventListener('click', toggleFn);
+      }
     }
 
     // AI Agent Interactive Chat simulation
