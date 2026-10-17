@@ -835,7 +835,7 @@ button {
 
 .section-preview-col {
   width: 800px;
-  height: 590px;
+  min-height: 440px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -986,8 +986,27 @@ button {
 }
 
 /* =============================================================================
-   7. EXTENSIONS 3x3 GRID (Figma: width 800px)
+   7. CODE WITH EXTENSIONS (Figma: padding 50px 100px 20px, height: 550px)
    ============================================================================= */
+.code-with-extensions-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 100px 20px;
+  gap: 80px;
+  width: 100%;
+}
+
+.extension-marketplace-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+  width: 800px;
+}
+
 .extensions-grid-container {
   display: flex;
   flex-direction: column;
@@ -1010,6 +1029,7 @@ button {
   padding: 16px;
   gap: 12px;
   width: 256px;
+  min-height: 125px;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
@@ -1028,6 +1048,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 24px;
 }
 
 .extension-icon-box svg {
@@ -1058,25 +1079,34 @@ button {
   color: var(--text-body);
 }
 
-.marketplace-center-link {
-  width: 100%;
+.extension-marketplace-link {
   font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 17px;
-  text-align: center;
-  color: var(--text-title);
-  margin-top: 16px;
-  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
   text-decoration: underline;
+  color: var(--text-link);
+  transition: color 0.15s ease;
 }
 
-.marketplace-center-link:hover {
-  color: var(--text-link);
+.extension-marketplace-link:hover {
+  color: var(--text-link-hover);
 }
 
 /* =============================================================================
-   8. CODE IN ANY LANGUAGE (4 Rows of 3 Columns)
+   8. CODE IN ANY LANGUAGE (Figma: padding 80px 100px 70px, height: 350px)
    ============================================================================= */
+.code-in-any-language-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 100px 70px;
+  gap: 80px;
+  width: 100%;
+}
+
 .supported-languages-grid {
   display: flex;
   flex-direction: column;
@@ -1106,6 +1136,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
 }
 
 .language-icon-box svg {
@@ -1532,8 +1563,11 @@ button {
    ============================================================================= */
 @media (max-width: 1280px) {
   .page-wrapper { width: 100%; padding: 0 16px; }
-  .feature-split-section { padding: 60px 24px; gap: 40px; }
+  .feature-split-section,
+  .code-with-extensions-section,
+  .code-in-any-language-section { padding: 60px 24px; gap: 40px; }
   .section-preview-col { width: 100%; max-width: 700px; }
+  .extension-marketplace-col { width: 100%; }
   .copilot-free-banner { width: 100%; }
   .rich-features-grid { width: 100%; }
   .extensions-grid-container { width: 100%; }
@@ -1549,7 +1583,10 @@ button {
   .download-options-box { width: 100%; height: auto; }
   .platform-download-row { flex-direction: column; width: 100%; }
   .platform-download-button { width: 100%; }
-  .feature-split-section, .feature-split-section.reverse {
+  .feature-split-section,
+  .feature-split-section.reverse,
+  .code-with-extensions-section,
+  .code-in-any-language-section {
     flex-direction: column;
     padding: 40px 16px;
   }
