@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HPC Studio - The Scientific IDE for Supercomputing &amp; Quantum Simulation</title>
-  <meta name="description" content="HPC Studio is a specialized scientific IDE built on Code OSS. Features native Quantum ESPRESSO support, Slurm workload management, interactive 3D crystal visualization, and AI Agent workflows.">
+  <meta name="description" content="HPC Studio is a specialized scientific IDE built on Code OSS. Features native Quantum ESPRESSO support, Slurm workload management, interactive 3D crystal visualization, and autonomous AI Agent workflows.">
   <meta name="keywords" content="HPC Studio, Quantum ESPRESSO, Supercomputing, Slurm, Code OSS, DFT, Materials Science, Crystallography, AI Agents, Scientific Computing">
   
   <!-- Open Graph / Meta -->
@@ -15,575 +15,896 @@
   
   <!-- CSS Design System -->
   <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/workbench.css">
-  <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="assets/icons/hpc-studio.svg">
 </head>
 <body>
 
-  <!-- =========================================================================
-       Header & Navbar
-       ========================================================================= -->
-  <header class="site-header" role="banner">
-    <div class="container header-container">
-      <div class="brand-wrapper">
-        <a href="#" class="brand-link" aria-label="HPC Studio Home">
-          <div class="logo-arc-reactor" aria-hidden="true">
-            <div class="arc-ring"></div>
-            <div class="arc-core"></div>
-          </div>
+  <div class="page-wrapper">
+    <!-- =========================================================================
+         1. MAIN NAVIGATION (Height: 74px)
+         ========================================================================= -->
+    <header class="main-navigation" role="banner">
+      <div class="nav-links-cluster">
+        <a href="#" class="brand-container" aria-label="HPC Studio Home">
+          <!-- Arc Reactor Brand Logo -->
+          <svg class="brand-logo-svg" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="13" cy="13.5" r="11" stroke="currentColor" stroke-width="2.2" stroke-dasharray="3 3"/>
+            <circle cx="13" cy="13.5" r="6" stroke="#00D2FF" stroke-width="2"/>
+            <circle cx="13" cy="13.5" r="2.5" fill="#4DAAFC"/>
+          </svg>
+          <span class="brand-name">HPC Studio</span>
         </a>
-        <a href="#" class="brand-title">HPC Studio</a>
+
+        <nav class="site-links" aria-label="Main Navigation">
+          <a href="#features" class="nav-link-item">Docs</a>
+          <a href="#updates" class="nav-link-item">Updates</a>
+          <a href="#blog" class="nav-link-item">Blog</a>
+          <a href="#api" class="nav-link-item">API</a>
+          <a href="#extensions" class="nav-link-item">Extensions</a>
+          <a href="#faq" class="nav-link-item">FAQ</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="nav-link-item">GitHub</a>
+        </nav>
       </div>
 
-      <nav class="main-nav" id="main-nav-menu" role="navigation" aria-label="Main Navigation">
-        <ul class="nav-list">
-          <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#documentation" class="nav-link">Documentation</a></li>
-          <li><a href="#quantum-espresso" class="nav-link">Quantum ESPRESSO</a></li>
-          <li><a href="#supercomputing" class="nav-link">Supercomputing</a></li>
-          <li><a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
-        </ul>
-      </nav>
+      <div class="nav-actions">
+        <div class="search-box-pill" role="search">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="7" cy="7" r="5"/>
+            <line x1="10.5" y1="10.5" x2="14.5" y2="14.5"/>
+          </svg>
+          <span class="search-label">Search</span>
+          <span class="keyboard-shortcut-badge">Ctrl K</span>
+        </div>
 
-      <div class="header-actions">
-        <button id="theme-toggle-btn" class="theme-toggle-btn" title="Toggle color theme" aria-label="Toggle theme">
+        <button id="theme-toggle-btn" class="theme-toggle-action" title="Toggle color theme" aria-label="Toggle theme">
           <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
         </button>
 
-        <a href="#download" class="btn btn-primary header-download-btn" data-os-detect-target>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/tag/v1.143.0" class="nav-download-button" data-os-detect-target>
           <span class="btn-main-text">Download</span>
         </a>
-
-        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          ☰
-        </button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main role="main">
     <!-- =========================================================================
-         Hero Section
+         2. ANNOUNCEMENT BAR (Height: 40px)
          ========================================================================= -->
-    <section class="hero-section" aria-labelledby="hero-heading">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="container">
-        
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="pill">v1.143.0</span>
-            <span>Next-Gen Materials &amp; Cluster IDE</span>
+    <aside class="announcement-bar" aria-label="Product Update Announcement">
+      <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/tag/v1.143.0" target="_blank" rel="noopener noreferrer" class="announcement-text">
+        Version 1.143 is now available! Read about the new Quantum ESPRESSO integration and HPC simulation agents.
+      </a>
+      <button class="announcement-close-btn" aria-label="Dismiss announcement" onclick="this.parentElement.style.display='none'">✕</button>
+    </aside>
+
+    <main role="main" style="width: 100%;">
+      <!-- =========================================================================
+           3. HERO SECTION (Height: 986px)
+           ========================================================================= -->
+      <section class="hero-section" aria-labelledby="hero-title">
+        <!-- Matrix / Binary Code Background Pattern -->
+        <div class="binary-background-layer" aria-hidden="true">
+          <div class="binary-pattern-text">
+01010001 01110101 01100001 01101110 01110100 01110101 01101101 00100000 01000101 01010011 01010000 01010010 01000101 01010011 01010011 01001111
+01010011 01101100 01110101 01110010 01101101 00100000 01000011 01101100 01110101 01110011 01110100 01100101 01110010 00100000 01010011 01000011
+01000001 01100010 00100000 01001001 01101110 01101001 01110100 01101001 01101111 00100000 01000100 01000110 01010100 00100000 01010011 01101001
+01110000 01110111 00101110 01111000 00100000 01101101 01110000 01101001 01110010 01110101 01101110 00100000 01001000 01010000 01000011 00100000
+01010011 01110101 01110000 01100101 01110010 01100011 01101111 01101101 01110000 01110101 01110100 01101001 01101110 01100111 00100000 01001001
+01000001 01110010 01100011 00100000 01010010 01100101 01100001 01100011 01110100 01101111 01110010 00100000 01000011 01111001 01100010 01100101
           </div>
+        </div>
+        <div class="pattern-fade-overlay" aria-hidden="true"></div>
 
-          <h1 id="hero-heading" class="hero-title">
-            The Scientific IDE for <span class="text-gradient">Supercomputing</span> &amp; Quantum Simulation
-          </h1>
+        <h1 id="hero-title" class="hero-headline">Your simulation agent is waiting.</h1>
+        <div class="hero-subtitle-spacing"></div>
+        <p class="hero-subtitle">HPC Studio is a free, scientific IDE engineered for supercomputing, Quantum ESPRESSO, and automated AI agents.</p>
+        <div class="hero-download-spacing"></div>
 
-          <p class="hero-subtitle">
-            Built on Code OSS. Native Quantum ESPRESSO, Slurm workload management, interactive 3D molecular visualization, and AI Agent workflows for scientific clusters.
-          </p>
-
-          <!-- Smart Download CTA with Dropdown -->
-          <div class="hero-cta-group">
-            <div class="split-download-btn">
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/tag/v1.143.0" class="btn-download-main" data-os-detect-target id="hero-primary-download-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span class="btn-main-text">Download for Linux</span>
-              </a>
-              <button class="btn-download-split-toggle" data-dropdown-toggle="hero-download-dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Select alternative platforms and formats">
-                ▾
-              </button>
-
-              <div id="hero-download-dropdown" class="dropdown-menu" role="menu">
-                <div class="dropdown-section-title">Linux</div>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio_1.143.0_amd64.deb" class="dropdown-item" role="menuitem">
-                  <span>Debian / Ubuntu</span> <span class="file-ext">.deb (x64)</span>
-                </a>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-1.143.0.tar.gz" class="dropdown-item" role="menuitem">
-                  <span>Linux Tarball</span> <span class="file-ext">.tar.gz</span>
-                </a>
-
-                <div class="dropdown-section-title">Windows</div>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-Setup-1.143.0.exe" class="dropdown-item" role="menuitem">
-                  <span>User Installer</span> <span class="file-ext">.exe (x64)</span>
-                </a>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-win32-x64-1.143.0.zip" class="dropdown-item" role="menuitem">
-                  <span>Portable Archive</span> <span class="file-ext">.zip</span>
-                </a>
-
-                <div class="dropdown-section-title">macOS</div>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-1.143.0-arm64.dmg" class="dropdown-item" role="menuitem">
-                  <span>Apple Silicon</span> <span class="file-ext">.dmg (M1/M2/M3)</span>
-                </a>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-1.143.0-x64.dmg" class="dropdown-item" role="menuitem">
-                  <span>Intel Mac</span> <span class="file-ext">.dmg (x64)</span>
-                </a>
-
-                <div class="dropdown-section-title">VS Code Marketplace</div>
-                <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-extension-1.143.0.vsix" class="dropdown-item" role="menuitem">
-                  <span>Extension Package</span> <span class="file-ext">.vsix</span>
-                </a>
-              </div>
-            </div>
-
-            <a href="https://github.com/nosedimetuXD/HPC-Studio#readme" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-              <span>Explore Docs</span>
+        <!-- Download Options Box (Figma width: 716px) -->
+        <div class="download-options-box">
+          <div class="platform-download-row">
+            <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio_1.143.0_amd64.deb" class="platform-download-button" data-os-detect-target>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span class="btn-main-text">Download for Linux</span>
             </a>
-
-            <div class="hero-os-hint">
-              <span data-os-badge>Linux (.deb / x64)</span> &bull; Open-source under MIT &bull; Web &amp; Desktop
+            <a href="https://github.com/nosedimetuXD/HPC-Studio#readme" class="platform-download-button" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Get HPC Agent</span>
+            </a>
+          </div>
+          <div class="download-secondary-links">
+            <a href="#downloads-matrix" class="other-downloads-link">Other platforms (.deb, .tar.gz, Windows, macOS, .vsix)</a>
+            <div class="license-notice-text">
+              <span data-os-badge>Linux (.deb / x64)</span> &bull; By using HPC Studio, you agree to its license and privacy statement.
             </div>
           </div>
         </div>
 
-        <!-- =========================================================================
-             Realistic Interactive Workbench
-             ========================================================================= -->
-        <div class="workbench-container" role="region" aria-label="Interactive HPC Studio Workbench Demo">
-          <!-- Window Titlebar -->
-          <div class="wb-titlebar">
-            <div class="wb-window-controls" aria-hidden="true">
-              <div class="wb-dot close"></div>
-              <div class="wb-dot min"></div>
-              <div class="wb-dot max"></div>
-            </div>
-            <div class="wb-title-text">
-              <span>pw.scf.silicon.in — HPC Studio (Code OSS) [SSH: hpc-cluster-node01]</span>
-              <span class="wb-title-badge">QE 7.3</span>
-            </div>
-            <div class="wb-actions">
-              <button class="crystal-btn" id="wb-toggle-terminal" aria-expanded="true">▼ Terminal</button>
-            </div>
-          </div>
+        <div class="hero-preview-spacing"></div>
 
-          <!-- Tabs Header -->
-          <div class="wb-tabs-header" role="tablist">
-            <button class="wb-tab-btn active" role="tab" id="tab-btn-pw" aria-selected="true" aria-controls="wb-panel-pw" data-tab="pw-scf">
-              <span class="wb-tab-icon" aria-hidden="true">⚛️</span>
-              <span>pw.scf.silicon.in</span>
-            </button>
-            <button class="wb-tab-btn" role="tab" id="tab-btn-slurm" aria-selected="false" aria-controls="wb-panel-slurm" data-tab="slurm-batch">
-              <span class="wb-tab-icon" aria-hidden="true">⚡</span>
-              <span>run_cluster.slurm</span>
-            </button>
-            <button class="wb-tab-btn" role="tab" id="tab-btn-crystal" aria-selected="false" aria-controls="wb-panel-crystal" data-tab="crystal-3d">
-              <span class="wb-tab-icon" aria-hidden="true">🔮</span>
-              <span>3D Crystal Viewer</span>
-            </button>
-            <button class="wb-tab-btn" role="tab" id="tab-btn-agent" aria-selected="false" aria-controls="wb-panel-agent" data-tab="hpc-agent">
-              <span class="wb-tab-icon" aria-hidden="true">🤖</span>
-              <span>HPC AI Agent</span>
-            </button>
-          </div>
-
-          <!-- Body with Activity Bar, Sidebar, and Content -->
-          <div class="wb-body">
-            <!-- Activity Bar -->
-            <div class="wb-activity-bar" aria-label="Activity Bar">
-              <div class="activity-icon active" title="Explorer" aria-label="Explorer">📁</div>
-              <div class="activity-icon" title="Slurm Cluster Manager" aria-label="Slurm Cluster Manager">📊</div>
-              <div class="activity-icon" title="Quantum ESPRESSO Tools" aria-label="Quantum Tools">⚛️</div>
-              <div class="activity-icon" title="AI Agent" aria-label="AI Agent">⚡</div>
-              <div class="activity-icon" title="Source Control" aria-label="Source Control">🌿</div>
-            </div>
-
-            <!-- Explorer Sidebar -->
-            <div class="wb-sidebar" aria-label="Project Explorer">
-              <div class="sidebar-title">Cluster Workspace</div>
-              <ul class="sidebar-tree">
-                <li class="tree-item active">📄 pw.scf.silicon.in</li>
-                <li class="tree-item">📄 run_cluster.slurm</li>
-                <li class="tree-item">📁 pseudopotentials/</li>
-                <li class="tree-item" style="padding-left: 1.25rem;">📄 Si.pbe-n-rrkjus_psl.1.0.0.UPF</li>
-                <li class="tree-item">📁 outputs/</li>
-                <li class="tree-item" style="padding-left: 1.25rem;">📊 pw.scf.silicon.pwo</li>
-                <li class="tree-item">📄 silicon.cif</li>
-              </ul>
-            </div>
-
-            <!-- Editor Main Area -->
-            <div class="wb-editor-area">
-              <!-- Tab 1: pw.scf.silicon.in -->
-              <div class="wb-tab-content active" id="wb-panel-pw-scf" role="tabpanel" aria-labelledby="tab-btn-pw">
-                <div class="code-container font-mono">
-                  <div class="code-line"><span class="line-num">1</span><span class="line-code"><span class="syn-kw">&amp;CONTROL</span></span></div>
-                  <div class="code-line"><span class="line-num">2</span><span class="line-code">  calculation   = <span class="syn-str">'scf'</span>,</span></div>
-                  <div class="code-line"><span class="line-num">3</span><span class="line-code">  restart_mode  = <span class="syn-str">'from_scratch'</span>,</span></div>
-                  <div class="code-line"><span class="line-num">4</span><span class="line-code">  outdir        = <span class="syn-str">'./tmp/'</span>,</span></div>
-                  <div class="code-line"><span class="line-num">5</span><span class="line-code">  prefix        = <span class="syn-str">'silicon_bulk'</span>,</span></div>
-                  <div class="code-line"><span class="line-num">6</span><span class="line-code">  pseudo_dir    = <span class="syn-str">'./pseudopotentials/'</span></span></div>
-                  <div class="code-line"><span class="line-num">7</span><span class="line-code"><span class="syn-kw">/</span></span></div>
-                  <div class="code-line"><span class="line-num">8</span><span class="line-code"><span class="syn-kw">&amp;SYSTEM</span></span></div>
-                  <div class="code-line"><span class="line-num">9</span><span class="line-code">  ibrav       = <span class="syn-num">2</span>,  <span class="syn-com">! FCC Lattice (Diamond Structure)</span></span></div>
-                  <div class="code-line"><span class="line-num">10</span><span class="line-code">  celldm(1)   = <span class="syn-num">10.26</span>, <span class="syn-com">! Lattice constant in Bohr</span></span></div>
-                  <div class="code-line"><span class="line-num">11</span><span class="line-code">  nat         = <span class="syn-num">2</span>,</span></div>
-                  <div class="code-line"><span class="line-num">12</span><span class="line-code">  ntyp        = <span class="syn-num">1</span>,</span></div>
-                  <div class="code-line"><span class="line-num">13</span><span class="line-code">  ecutwfc     = <span class="syn-num">30.0</span>,</span></div>
-                  <div class="code-line"><span class="line-num">14</span><span class="line-code">  ecutrho     = <span class="syn-num">240.0</span></span></div>
-                  <div class="code-line"><span class="line-num">15</span><span class="line-code"><span class="syn-kw">/</span></span></div>
-                  <div class="code-line"><span class="line-num">16</span><span class="line-code"><span class="syn-kw">&amp;ELECTRONS</span></span></div>
-                  <div class="code-line"><span class="line-num">17</span><span class="line-code">  mixing_beta = <span class="syn-num">0.7</span>,</span></div>
-                  <div class="code-line"><span class="line-num">18</span><span class="line-code">  conv_thr    = <span class="syn-num">1.0d-8</span></span></div>
-                  <div class="code-line"><span class="line-num">19</span><span class="line-code"><span class="syn-kw">/</span></span></div>
-                  <div class="code-line"><span class="line-num">20</span><span class="line-code"><span class="syn-kw">ATOMIC_SPECIES</span></span></div>
-                  <div class="code-line"><span class="line-num">21</span><span class="line-code">  Si  <span class="syn-num">28.086</span>  Si.pbe-n-rrkjus_psl.1.0.0.UPF</span></div>
-                  <div class="code-line"><span class="line-num">22</span><span class="line-code"><span class="syn-kw">ATOMIC_POSITIONS</span> (alat)</span></div>
-                  <div class="code-line"><span class="line-num">23</span><span class="line-code">  Si  <span class="syn-num">0.00</span>  <span class="syn-num">0.00</span>  <span class="syn-num">0.00</span></span></div>
-                  <div class="code-line"><span class="line-num">24</span><span class="line-code">  Si  <span class="syn-num">0.25</span>  <span class="syn-num">0.25</span>  <span class="syn-num">0.25</span></span></div>
-                  <div class="code-line"><span class="line-num">25</span><span class="line-code"><span class="syn-kw">K_POINTS</span> (automatic)</span></div>
-                  <div class="code-line"><span class="line-num">26</span><span class="line-code">  <span class="syn-num">4 4 4</span>  <span class="syn-num">1 1 1</span></span></div>
+        <!-- Hero Preview Frame with Iconic Glowing Blue Aura -->
+        <div class="multi-agent-editor-preview">
+          <div class="preview-glow-shell">
+            <div class="workbench-shell" role="region" aria-label="Interactive HPC Studio Workbench Demo">
+              
+              <!-- Window Titlebar -->
+              <div class="wb-titlebar">
+                <div class="wb-window-dots" aria-hidden="true">
+                  <div class="wb-dot red"></div>
+                  <div class="wb-dot yellow"></div>
+                  <div class="wb-dot green"></div>
                 </div>
+                <div class="wb-titlebar-title">
+                  <span>pw.scf.silicon.in — HPC Studio (Code OSS) [SSH: hpc-cluster-node01]</span>
+                  <span class="wb-title-badge">QE 7.3</span>
+                </div>
+                <div style="font-size: 11px; color: var(--text-body); cursor: pointer;" id="wb-toggle-terminal">▼ Terminal</div>
               </div>
 
-              <!-- Tab 2: run_cluster.slurm -->
-              <div class="wb-tab-content" id="wb-panel-slurm-batch" role="tabpanel" aria-labelledby="tab-btn-slurm" hidden>
-                <div class="code-container font-mono">
-                  <div class="code-line"><span class="line-num">1</span><span class="line-code"><span class="syn-com">#!/bin/bash</span></span></div>
-                  <div class="code-line"><span class="line-num">2</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --job-name=qe_silicon_scf</span></div>
-                  <div class="code-line"><span class="line-num">3</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --partition=standard</span></div>
-                  <div class="code-line"><span class="line-num">4</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --nodes=1</span></div>
-                  <div class="code-line"><span class="line-num">5</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --ntasks-per-node=16</span></div>
-                  <div class="code-line"><span class="line-num">6</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --cpus-per-task=1</span></div>
-                  <div class="code-line"><span class="line-num">7</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --time=01:00:00</span></div>
-                  <div class="code-line"><span class="line-num">8</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --output=outputs/slurm-%j.out</span></div>
-                  <div class="code-line"><span class="line-num">9</span><span class="line-code"><span class="syn-directive">#SBATCH</span> --error=outputs/slurm-%j.err</span></div>
-                  <div class="code-line"><span class="line-num">10</span><span class="line-code"></span></div>
-                  <div class="code-line"><span class="line-num">11</span><span class="line-code"><span class="syn-com"># Environment Setup</span></span></div>
-                  <div class="code-line"><span class="line-num">12</span><span class="line-code"><span class="syn-fn">module purge</span></span></div>
-                  <div class="code-line"><span class="line-num">13</span><span class="line-code"><span class="syn-fn">module load</span> openmpi/4.1.4 intel/mkl/2022 quantum-espresso/7.3</span></div>
-                  <div class="code-line"><span class="line-num">14</span><span class="line-code"></span></div>
-                  <div class="code-line"><span class="line-num">15</span><span class="line-code"><span class="syn-kw">export</span> OMP_NUM_THREADS=<span class="syn-num">1</span></span></div>
-                  <div class="code-line"><span class="line-num">16</span><span class="line-code"><span class="syn-kw">export</span> ESPRESSO_TMPDIR=<span class="syn-str">"./tmp"</span></span></div>
-                  <div class="code-line"><span class="line-num">17</span><span class="line-code"></span></div>
-                  <div class="code-line"><span class="line-num">18</span><span class="line-code"><span class="syn-com"># Execute Quantum ESPRESSO Self-Consistent Field solver</span></span></div>
-                  <div class="code-line"><span class="line-num">19</span><span class="line-code"><span class="syn-fn">mpirun</span> -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk <span class="syn-num">2</span> &lt; pw.scf.silicon.in &gt; outputs/pw.scf.silicon.pwo</span></div>
-                  <div class="code-line"><span class="line-num">20</span><span class="line-code"></span></div>
-                  <div class="code-line"><span class="line-num">21</span><span class="line-code"><span class="syn-kw">echo</span> <span class="syn-str">"Job ${SLURM_JOB_ID} completed successfully on $(hostname)"</span></span></div>
+              <!-- Workbench Body -->
+              <div class="wb-body">
+                <!-- Activity Bar -->
+                <div class="wb-activitybar" aria-label="Workbench Activity Bar">
+                  <div class="wb-act-btn active" title="Explorer">📁</div>
+                  <div class="wb-act-btn" title="Slurm Cluster Manager">📊<span class="wb-pulse-indicator"></span></div>
+                  <div class="wb-act-btn" title="Quantum ESPRESSO Tools">⚛️</div>
+                  <div class="wb-act-btn" title="AI Agent">⚡</div>
+                  <div class="wb-act-btn" title="Source Control">🌿</div>
                 </div>
-              </div>
 
-              <!-- Tab 3: 3D Crystal Viewer -->
-              <div class="wb-tab-content" id="wb-panel-crystal-3d" role="tabpanel" aria-labelledby="tab-btn-crystal" hidden>
-                <div class="crystal-viewer-container">
-                  <canvas id="crystal-canvas" class="crystal-canvas" aria-label="Interactive 3D model of Silicon FCC Lattice"></canvas>
-                  <div class="crystal-overlay-controls">
-                    <button class="crystal-btn" id="crystal-rotate-toggle">⏸ Pause</button>
-                    <button class="crystal-btn" id="crystal-reset-btn">↺ Reset View</button>
+                <!-- Main Content Area -->
+                <div class="wb-main-content">
+                  <!-- Tab Bar -->
+                  <div class="wb-tab-bar" role="tablist">
+                    <button class="wb-tab wb-tab-btn active" role="tab" data-tab="pw-scf" aria-selected="true" aria-controls="wb-panel-pw-scf">
+                      <span>⚛️ pw.scf.silicon.in</span>
+                    </button>
+                    <button class="wb-tab wb-tab-btn" role="tab" data-tab="slurm-batch" aria-selected="false" aria-controls="wb-panel-slurm-batch">
+                      <span>⚡ run_cluster.slurm</span>
+                    </button>
+                    <button class="wb-tab wb-tab-btn" role="tab" data-tab="crystal-3d" aria-selected="false" aria-controls="wb-panel-crystal-3d">
+                      <span>🔮 3D Crystal Viewer</span>
+                    </button>
+                    <button class="wb-tab wb-tab-btn" role="tab" data-tab="hpc-agent" aria-selected="false" aria-controls="wb-panel-hpc-agent">
+                      <span>🤖 HPC AI Agent</span>
+                    </button>
                   </div>
-                  <div class="crystal-meta-badge">
-                    <strong>Silicon (Si) Diamond Lattice</strong> &bull; Space Group Fd-3m (#227) &bull; Drag to rotate, scroll to zoom
-                  </div>
-                </div>
-              </div>
 
-              <!-- Tab 4: HPC AI Agent -->
-              <div class="wb-tab-content" id="wb-panel-hpc-agent" role="tabpanel" aria-labelledby="tab-btn-agent" hidden>
-                <div class="agent-chat-container">
-                  <div class="agent-messages" id="wb-agent-messages" role="log" aria-live="polite">
-                    <div class="agent-msg ai-msg">
-                      <div class="msg-header"><span class="avatar">⚡</span> <strong>HPC Studio Assistant</strong> <span class="tag-badge">DeepMind Antigravity MCP</span></div>
-                      <div class="msg-body">
-                        Hello Dr. Scientist! I've loaded your workspace for cluster <code>hpc-cluster-node01</code>.
-                        I verified your Quantum ESPRESSO input file <code>pw.scf.silicon.in</code>:
-                        <ul>
-                          <li>Cutoff energy: <strong>30.0 Ry</strong> with dual 8.0 (240 Ry rho cutoff).</li>
-                          <li>Slurm script configured for <strong>16 MPI ranks</strong> across standard partition.</li>
-                        </ul>
-                        Ask me to monitor convergence, diagnose failed SCF iterations, or submit Slurm jobs!
+                  <!-- Tab 1: pw.scf.silicon.in -->
+                  <div class="wb-editor-view wb-tab-content active" id="wb-panel-pw-scf" role="tabpanel">
+                    <div class="code-editor-pane">
+<pre><span class="syn-comment">! Quantum ESPRESSO 7.3 - Self-Consistent Field (SCF) Calculation</span>
+<span class="syn-namelist">&amp;CONTROL</span>
+  calculation   = <span class="syn-str">'scf'</span>,
+  restart_mode  = <span class="syn-str">'from_scratch'</span>,
+  outdir        = <span class="syn-str">'./tmp/'</span>,
+  prefix        = <span class="syn-str">'silicon_bulk'</span>,
+  pseudo_dir    = <span class="syn-str">'./pseudopotentials/'</span>
+<span class="syn-namelist">/</span>
+<span class="syn-namelist">&amp;SYSTEM</span>
+  ibrav       = <span class="syn-num">2</span>,  <span class="syn-comment">! FCC Lattice (Diamond Structure)</span>
+  celldm(1)   = <span class="syn-num">10.26</span>, <span class="syn-comment">! Lattice parameter in Bohr (5.43 Angstrom)</span>
+  nat         = <span class="syn-num">2</span>,
+  ntyp        = <span class="syn-num">1</span>,
+  ecutwfc     = <span class="syn-num">30.0</span>,  <span class="syn-comment">! Kinetic energy cutoff for wavefunctions (Ry)</span>
+  ecutrho     = <span class="syn-num">240.0</span>  <span class="syn-comment">! Kinetic energy cutoff for charge density (Ry)</span>
+<span class="syn-namelist">/</span>
+<span class="syn-namelist">&amp;ELECTRONS</span>
+  mixing_beta = <span class="syn-num">0.7</span>,
+  conv_thr    = <span class="syn-num">1.0d-8</span>
+<span class="syn-namelist">/</span>
+<span class="syn-card">ATOMIC_SPECIES</span>
+  Si  <span class="syn-num">28.086</span>  Si.pbe-n-rrkjus_psl.1.0.0.UPF
+<span class="syn-card">ATOMIC_POSITIONS</span> (alat)
+  Si  <span class="syn-num">0.00</span>  <span class="syn-num">0.00</span>  <span class="syn-num">0.00</span>
+  Si  <span class="syn-num">0.25</span>  <span class="syn-num">0.25</span>  <span class="syn-num">0.25</span>
+<span class="syn-card">K_POINTS</span> (automatic)
+  <span class="syn-num">4 4 4</span>  <span class="syn-num">1 1 1</span></pre>
+                    </div>
+                  </div>
+
+                  <!-- Tab 2: run_cluster.slurm -->
+                  <div class="wb-editor-view wb-tab-content" id="wb-panel-slurm-batch" role="tabpanel">
+                    <div class="code-editor-pane">
+<pre><span class="syn-comment">#!/bin/bash</span>
+<span class="syn-slurm">#SBATCH --job-name=qe_silicon_scf</span>
+<span class="syn-slurm">#SBATCH --partition=standard</span>
+<span class="syn-slurm">#SBATCH --nodes=1</span>
+<span class="syn-slurm">#SBATCH --ntasks-per-node=16</span>
+<span class="syn-slurm">#SBATCH --cpus-per-task=1</span>
+<span class="syn-slurm">#SBATCH --time=01:00:00</span>
+<span class="syn-slurm">#SBATCH --output=outputs/slurm-%j.out</span>
+
+<span class="syn-comment"># Environment Setup</span>
+module purge
+module load openmpi/4.1.4 intel/mkl/2022 quantum-espresso/7.3
+
+<span class="syn-kwd">export</span> OMP_NUM_THREADS=<span class="syn-num">1</span>
+<span class="syn-kwd">export</span> ESPRESSO_TMPDIR=<span class="syn-str">"./tmp"</span>
+
+<span class="syn-comment"># Execute Quantum ESPRESSO Self-Consistent Field solver</span>
+mpirun -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk 2 &lt; pw.scf.silicon.in &gt; outputs/pw.scf.silicon.pwo
+<span class="syn-kwd">echo</span> <span class="syn-str">"Job ${SLURM_JOB_ID} completed successfully on $(hostname)"</span></pre>
+                    </div>
+                  </div>
+
+                  <!-- Tab 3: 3D Crystal Viewer -->
+                  <div class="wb-editor-view wb-tab-content" id="wb-panel-crystal-3d" role="tabpanel">
+                    <div class="wb-visualizer-pane">
+                      <canvas id="crystal-canvas" aria-label="Interactive 3D model of Silicon FCC Lattice"></canvas>
+                      <div class="vis-floating-toolbar">
+                        <span style="font-size: 11px; color: var(--text-title); align-self: center;">Silicon (Si) Diamond Lattice</span>
+                        <button class="vis-btn" id="crystal-rotate-toggle">⏸ Pause</button>
+                        <button class="vis-btn" id="crystal-reset-btn">↺ Reset View</button>
                       </div>
                     </div>
                   </div>
-                  <div class="agent-input-bar">
-                    <input type="text" id="wb-agent-input" class="agent-input" placeholder="Ask agent: 'Check SCF convergence' or 'Query Slurm queue'..." aria-label="Message HPC Studio Agent">
-                    <button id="wb-agent-send" class="btn btn-primary" style="padding: 0.5rem 1rem;">Send</button>
+
+                  <!-- Tab 4: HPC AI Agent -->
+                  <div class="wb-editor-view wb-tab-content" id="wb-panel-hpc-agent" role="tabpanel">
+                    <div class="wb-agent-chat-pane">
+                      <div id="wb-agent-messages" style="display: flex; flex-direction: column; gap: 12px; flex: 1; overflow-y: auto;">
+                        <div class="agent-msg-box">
+                          <div class="agent-msg-author">⚡ HPC Studio Agent <span style="font-size: 10px; opacity: 0.7;">DeepMind Antigravity MCP</span></div>
+                          <div class="agent-msg-content">
+                            Cluster connection to <strong>hpc-cluster-node01</strong> verified. I've validated <code>pw.scf.silicon.in</code>:
+                            Cutoff energy is calibrated at <strong>30.0 Ry</strong> with dual 8.0 (240 Ry rho cutoff). Slurm batch script prepared for 16 MPI ranks across standard partition. Ready to launch SCF calculation.
+                          </div>
+                        </div>
+                      </div>
+                      <div style="display: flex; gap: 8px; margin-top: auto;">
+                        <input type="text" id="wb-agent-input" placeholder="Ask agent: 'Check convergence' or 'Query Slurm queue'..." style="flex: 1; padding: 8px 12px; background: #0D1014; border: 1px solid var(--border-light); border-radius: 4px; color: #FFFFFF; font-family: var(--font-sans); font-size: 13px;" aria-label="Ask HPC Studio Agent">
+                        <button id="wb-agent-send" style="padding: 8px 16px; background: var(--bg-cta-primary); color: #FFFFFF; border-radius: 4px; font-weight: 600; font-size: 13px;">Send</button>
+                      </div>
+                    </div>
                   </div>
+                </div>
+              </div>
+
+              <!-- Terminal Output Drawer -->
+              <div id="wb-terminal-drawer" style="background: #090B0E; border-top: 1px solid var(--border-subtle); padding: 8px 16px; font-family: var(--font-mono); font-size: 11.5px; line-height: 1.5; color: var(--text-body);">
+                <div style="color: var(--color-arc-cyan); font-weight: 600; margin-bottom: 4px;">TERMINAL: bash (SSH: node01.cluster.hpc) &bull; Slurm Job #49201 [RUNNING]</div>
+                <div>[node01:qe_silicon]$ sbatch run_cluster.slurm &amp;&amp; tail -f outputs/pw.scf.silicon.pwo</div>
+                <div>iteration # 1 -- ecut = 30.00 Ry -- total energy = -15.84234502 Ry -- estimated scf accuracy &lt; 0.0528 Ry</div>
+                <div style="color: var(--color-slurm-green);">iteration # 5 -- ecut = 30.00 Ry -- total energy = -15.84452190 Ry -- convergence achieved (accuracy &lt; 1.0d-8)</div>
+              </div>
+
+              <!-- Statusbar -->
+              <div class="wb-statusbar">
+                <div class="wb-status-cluster">
+                  <span>⚡ SSH: hpc-cluster-node01 (online)</span>
+                  <span>Slurm: 1 Running | 0 Pending</span>
+                </div>
+                <div class="wb-status-cluster">
+                  <span>UTF-8</span>
+                  <span>Quantum ESPRESSO Namelist</span>
+                  <span>Spaces: 2</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           4. TWO-COLUMN FEATURE 1: Agents that simulate for you
+           ========================================================================= -->
+      <section class="feature-split-section" id="features" aria-labelledby="feature-agents-heading">
+        <div class="section-intro-col">
+          <h2 id="feature-agents-heading" class="section-heading-h2">Agents that simulate for you</h2>
+          <p class="section-description-text">
+            Deploy autonomous scientific agents to handle repetitive simulation loops. Agents configure ab initio parameters, generate reciprocal k-point grids, diagnose SCF oscillations, and orchestrate Slurm workloads across supercomputing nodes.
+          </p>
+          <a href="#ai-workflows" class="section-learn-more-link">Explore AI workflows</a>
+        </div>
+        <div class="section-preview-col">
+          <div class="preview-inner-card">
+            <div class="preview-card-header">
+              <div class="wb-window-dots">
+                <div class="wb-dot red"></div>
+                <div class="wb-dot yellow"></div>
+                <div class="wb-dot green"></div>
+              </div>
+              <span style="font-size: 12px; color: var(--text-title); font-weight: 500;">HPC Diagnostic Agent &bull; SCF Convergence Analyzer</span>
+              <span style="font-size: 11px; color: var(--color-slurm-green); font-weight: 600;">ACTIVE</span>
+            </div>
+            <div class="preview-card-content">
+              <div class="preview-diff-panel">
+                <div style="font-size: 13px; font-weight: 600; color: var(--text-title); display: flex; align-items: center; gap: 8px;">
+                  <span style="color: var(--color-arc-cyan);">⚡ Agent Diagnostic:</span> Charge Sloshing Detected
+                </div>
+                <div style="font-size: 12.5px; color: var(--text-body); line-height: 1.5;">
+                  Calculation <code>pw.scf.silicon.in</code> is oscillating after 14 iterations due to an aggressive charge density mixing parameter (<code>mixing_beta = 0.7</code>).
+                </div>
+                <div style="background: #101317; padding: 10px 14px; border-radius: 6px; font-family: var(--font-mono); font-size: 12px; display: flex; flex-direction: column; gap: 4px;">
+                  <span class="diff-tag-remove">- mixing_beta = 0.7</span>
+                  <span class="diff-tag-add">+ mixing_beta = 0.3</span>
+                  <span class="diff-tag-add">+ electron_maxstep = 100</span>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 4px;">
+                  <button class="preview-apply-btn">Apply Parameter Fix</button>
+                  <button style="padding: 6px 14px; background: rgba(255,255,255,0.06); color: var(--text-title); border-radius: 4px; font-size: 12px;">Re-run Slurm Job</button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Terminal Output Drawer -->
-          <div class="wb-terminal-drawer" id="wb-terminal-drawer">
-            <div class="terminal-header font-mono">
-              <span>TERMINAL: bash (SSH: node01.cluster.hpc)</span>
-              <span>Slurm Job #49201 [RUNNING]</span>
-            </div>
-            <div class="terminal-body font-mono">
-              <div>[node01:qe_silicon]$ sbatch run_cluster.slurm</div>
-              <div>Submitted batch job 49201</div>
-              <div>[node01:qe_silicon]$ tail -f outputs/pw.scf.silicon.pwo</div>
-              <div>iteration # 1 -- ecut = 30.00 Ry -- total energy = -15.84234502 Ry -- estimated scf accuracy &lt; 0.0528 Ry</div>
-              <div>iteration # 2 -- ecut = 30.00 Ry -- total energy = -15.84410912 Ry -- estimated scf accuracy &lt; 0.0034 Ry</div>
-              <div style="color: #22c55e;">iteration # 5 -- ecut = 30.00 Ry -- total energy = -15.84452190 Ry -- convergence achieved (accuracy &lt; 1.0d-8)</div>
-            </div>
+      <!-- =========================================================================
+           5. AGENT CAPABILITIES 3-CARD ROW
+           ========================================================================= -->
+      <section class="agent-capabilities-row" aria-label="HPC Studio Agent Capabilities">
+        <div class="agent-capability-card">
+          <h3 class="capability-card-title">Automated Ab Initio Workflows</h3>
+          <p class="capability-card-desc">
+            Run Quantum ESPRESSO relaxations, calculate phonon dispersions, and generate band structures with self-correcting agents that adjust mixing parameters dynamically upon convergence failure.
+          </p>
+        </div>
+        <div class="agent-capability-card">
+          <h3 class="capability-card-title">Slurm Cluster Orchestration</h3>
+          <p class="capability-card-desc">
+            Monitor cluster partitions, auto-allocate MPI ranks and GPUs, track walltime limits, and stream real-time standard output logs over secure SSH tunnels without leaving the editor.
+          </p>
+        </div>
+        <div class="agent-capability-card">
+          <h3 class="capability-card-title">Real-Time 3D Crystallography</h3>
+          <p class="capability-card-desc">
+            Inspect atomic unit cells, supercells, phonon displacement vectors, and bond angles with an embedded high-performance WebGL visualizer supporting CIF, XYZ, and PWI files.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           6. ATMOSPHERIC CALLOUT BANNER (Figma: 1240px x 175px)
+           ========================================================================= -->
+      <section class="free-agents-callout-wrapper" aria-label="Free and Open Source Announcement">
+        <div class="copilot-free-banner">
+          <h2 class="banner-heading-text">HPC Studio is open source and completely free.</h2>
+          <div class="banner-action-col">
+            <div class="banner-desc-text">Available for Linux, macOS, and Windows.</div>
+            <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/tag/v1.143.0" class="banner-try-button" data-os-detect-target>
+              <span class="btn-main-text">Download Free for Linux</span>
+            </a>
           </div>
+        </div>
+      </section>
 
-          <!-- Status Bar -->
-          <div class="wb-statusbar font-mono">
-            <div class="statusbar-item">
-              <span>⚡ SSH: hpc-cluster-node01 (online)</span>
+      <!-- =========================================================================
+           7. TWO-COLUMN FEATURE 2 (Reverse): A world-class scientific IDE
+           ========================================================================= -->
+      <section class="feature-split-section reverse" id="scientific-ide" aria-labelledby="feature-ide-heading">
+        <div class="section-intro-col">
+          <h2 id="feature-ide-heading" class="section-heading-h2">A world-class scientific IDE at its core</h2>
+          <p class="section-description-text">
+            Built directly on Code OSS, HPC Studio combines modern developer ergonomics with specialized computational materials tooling. Enjoy instant syntax highlighting, namelist completion for over 400 Quantum ESPRESSO variables, and seamless Git version control.
+          </p>
+          <a href="#editor-features" class="section-learn-more-link">Discover core capabilities</a>
+        </div>
+        <div class="section-preview-col">
+          <div class="preview-inner-card">
+            <div class="preview-card-header">
+              <div class="wb-window-dots">
+                <div class="wb-dot red"></div>
+                <div class="wb-dot yellow"></div>
+                <div class="wb-dot green"></div>
+              </div>
+              <span style="font-size: 12px; color: var(--text-title); font-weight: 500;">pw.scf.silicon.in — IntelliSense Documentation</span>
+              <span style="font-size: 11px; color: var(--color-arc-cyan);">QE Schema v7.3</span>
             </div>
-            <div class="statusbar-item">
-              <span>Slurm: 1 Running | 0 Pending</span>
-            </div>
-            <div class="statusbar-item">
-              <span>UTF-8 &bull; Fortran / QE Namelist &bull; Spaces: 2</span>
+            <div class="preview-card-content">
+<pre><span class="syn-namelist">&amp;SYSTEM</span>
+  ibrav       = <span class="syn-num">2</span>,
+  celldm(1)   = <span class="syn-num">10.26</span>,
+  nat         = <span class="syn-num">2</span>,
+  ntyp        = <span class="syn-num">1</span>,
+  <span style="text-decoration: underline; text-decoration-color: var(--color-arc-cyan); font-weight: 700; color: #FFFFFF;">ecutwfc</span>     = <span class="syn-num">30.0</span>,
+  ecutrho     = <span class="syn-num">240.0</span></pre>
+              <!-- IntelliSense Hover Popup -->
+              <div class="intellisense-hover-box">
+                <div class="intellisense-prop">ecutwfc (REAL) &bull; Namelist &amp;SYSTEM</div>
+                <div style="font-size: 12.5px; color: var(--text-title);">
+                  Kinetic energy cutoff (in Rydberg) for wavefunctions in plane-wave basis. For ultrasoft pseudopotentials or PAW sets, pair with <code>ecutrho &gt;= 8 * ecutwfc</code>.
+                </div>
+                <div style="margin-top: 6px; font-size: 11px; color: var(--text-link);">
+                  Default: 0.0 Ry &bull; Mandatory for SCF calculations &bull; Official QE Documentation ↗
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         Features Showcase (Pillars of HPC Studio)
-         ========================================================================= -->
-    <section class="features-section" id="features" aria-labelledby="features-heading">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="section-tag">Core Architecture</div>
-          <h2 id="features-heading" class="section-title">Engineered Specifically for High-Performance Science</h2>
-          <p class="section-desc">Traditional code editors treat scientific clusters like normal web servers. HPC Studio bridges raw compute with modern developer ergonomics.</p>
+      <!-- =========================================================================
+           8. EXTENSIONS 3x3 GRID (Figma: width 800px)
+           ========================================================================= -->
+      <section class="feature-split-section" id="extensions" aria-labelledby="extensions-heading">
+        <div class="section-intro-col">
+          <h2 id="extensions-heading" class="section-heading-h2">Customize with scientific extensions</h2>
+          <p class="section-description-text">
+            Add specialized extensions for Quantum ESPRESSO, Slurm cluster monitoring, interactive 3D crystal viewing, Python materials frameworks, and high-performance MPI toolchains.
+          </p>
+          <a href="https://marketplace.visualstudio.com" target="_blank" rel="noopener noreferrer" class="section-learn-more-link">Browse scientific extensions</a>
         </div>
+        <div class="section-preview-col" style="background: none; padding: 0;">
+          <div class="extensions-grid-container">
+            <div class="extensions-row">
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #F59E0B;">⚛️</div>
+                <div class="extension-details">
+                  <div class="extension-name">Quantum ESPRESSO</div>
+                  <div class="extension-desc">PWscf, PHonon, CP syntax &amp; convergence graphs</div>
+                </div>
+              </div>
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #10B981;">📊</div>
+                <div class="extension-details">
+                  <div class="extension-name">Slurm Manager</div>
+                  <div class="extension-desc">Queue monitoring, sbatch submission &amp; logs</div>
+                </div>
+              </div>
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #00D2FF;">🔮</div>
+                <div class="extension-details">
+                  <div class="extension-name">3D Structure Viewer</div>
+                  <div class="extension-desc">Interactive WebGL viewer for CIF, XYZ &amp; PWI</div>
+                </div>
+              </div>
+            </div>
 
-        <div class="features-grid">
-          
-          <!-- Card 1: Quantum ESPRESSO -->
-          <div class="feature-card featured-card" id="quantum-espresso">
-            <div class="feature-icon-wrapper" aria-hidden="true">⚛️</div>
-            <h3 class="feature-title">Quantum ESPRESSO &amp; Ab Initio Modeling</h3>
-            <p class="feature-text">
-              First-class language intelligence for PWscf, PHonon, CP, and Wannier90. Get real-time namelist validation (<code>&amp;CONTROL</code>, <code>&amp;SYSTEM</code>, <code>&amp;ELECTRONS</code>), auto-completion for over 400 QE parameters, and live total energy convergence graphs as your calculation runs.
-            </p>
-            <ul class="feature-list">
-              <li>Automatic Pseudopotential UPF / PSLibrary schema validation &amp; cutoff suggestions</li>
-              <li>Live SCF, Relax, and VC-Relax step convergence visualization</li>
-              <li>Band structure and Density of States (DOS) interactive plotting</li>
-            </ul>
+            <div class="extensions-row">
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #38BDF8;">🐍</div>
+                <div class="extension-details">
+                  <div class="extension-name">Python Scientific</div>
+                  <div class="extension-desc">IntelliSense for ASE, Pymatgen &amp; NumPy</div>
+                </div>
+              </div>
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #A855F7;">⚡</div>
+                <div class="extension-details">
+                  <div class="extension-name">Modern Fortran</div>
+                  <div class="extension-desc">F90/F2008 language server &amp; debugger</div>
+                </div>
+              </div>
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #6366F1;">💻</div>
+                <div class="extension-details">
+                  <div class="extension-name">C/C++ Supercomputing</div>
+                  <div class="extension-desc">MPI, OpenMP, and CUDA compiler support</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="extensions-row">
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #14B8A6;">🌐</div>
+                <div class="extension-details">
+                  <div class="extension-name">Remote - SSH</div>
+                  <div class="extension-desc">Direct development on HPC compute nodes</div>
+                </div>
+              </div>
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #EC4899;">📓</div>
+                <div class="extension-details">
+                  <div class="extension-name">Jupyter Notebooks</div>
+                  <div class="extension-desc">Interactive post-processing &amp; plotting</div>
+                </div>
+              </div>
+              <div class="extension-card-item">
+                <div class="extension-icon-box" style="color: #EAB308;">📚</div>
+                <div class="extension-details">
+                  <div class="extension-name">Materials Project API</div>
+                  <div class="extension-desc">Query crystalline structures and phase diagrams</div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <!-- Card 2: Supercomputing & Slurm -->
-          <div class="feature-card" id="supercomputing">
-            <div class="feature-icon-wrapper" aria-hidden="true">🖥️</div>
-            <h3 class="feature-title">Supercomputing &amp; Slurm Queue Manager</h3>
-            <p class="feature-text">
-              Direct integration into Slurm, PBS Pro, and SGE workload managers. Inspect node topology, track core allocations, submit jobs with a single click, and stream log outputs seamlessly over SSH.
-            </p>
-            <ul class="feature-list">
-              <li>Visual Slurm queue dashboard (squeue / sinfo / scontrol)</li>
-              <li>Instant <code>#SBATCH</code> syntax linting &amp; walltime checks</li>
-              <li>Automated SSH tunnels and remote environment forwarder</li>
-            </ul>
-          </div>
-
-          <!-- Card 3: 3D Crystal & Molecular Visualizer -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper" aria-hidden="true">🔮</div>
-            <h3 class="feature-title">Interactive 3D Crystal &amp; Molecular Visualizer</h3>
-            <p class="feature-text">
-              Inspect atomic coordinates, unit cells, and molecular orbitals directly in your editor viewport. Powered by lightweight WebGL with full support for <code>.cif</code>, <code>.xyz</code>, <code>.pwi</code>, and <code>.pwo</code> formats.
-            </p>
-            <ul class="feature-list">
-              <li>Unit cell replication (supercells 2x2x2, 3x3x3)</li>
-              <li>Real-time atomic displacement &amp; phonon mode animation</li>
-              <li>Direct bond length &amp; angle measurement tools</li>
-            </ul>
-          </div>
-
-          <!-- Card 4: Scientific AI Agents -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper" aria-hidden="true">🤖</div>
-            <h3 class="feature-title">Scientific AI Agents &amp; Built-in MCP Tools</h3>
-            <p class="feature-text">
-              Powered by Google DeepMind Antigravity and Model Context Protocol. AI assistants equipped with specialized scientific tools to diagnose SCF non-convergence, recommend k-point grids, and optimize MPI task distribution.
-            </p>
-            <ul class="feature-list">
-              <li>9 built-in MCP tools for Slurm, Quantum ESPRESSO, and CIF parsing</li>
-              <li>Diagnostic agent for SCF oscillations and density mixing adjustments</li>
-              <li>Autonomous parameter tuning workflows</li>
-            </ul>
-          </div>
-
-          <!-- Card 5: Quantum Mobile & VirtualBox Preset -->
-          <div class="feature-card">
-            <div class="feature-icon-wrapper" aria-hidden="true">📦</div>
-            <h3 class="feature-title">Quantum Mobile &amp; VirtualBox Preset</h3>
-            <p class="feature-text">
-              Zero-configuration environment for computational materials education. Built-in presets connect seamlessly to local Quantum Mobile virtual machines (127.0.0.1:2222) or remote cloud clusters with preloaded toolchains.
-            </p>
-            <ul class="feature-list">
-              <li>One-click connection to standard Quantum Mobile VMs</li>
-              <li>Preconfigured pseudopotential paths &amp; MPI profiles</li>
-              <li>Reproducible computational science benchmarks</li>
-            </ul>
-          </div>
-
+          <a href="https://marketplace.visualstudio.com" target="_blank" rel="noopener noreferrer" class="marketplace-center-link">
+            Browse hundreds of scientific extensions in the marketplace &rarr;
+          </a>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         Downloads Matrix Section
-         ========================================================================= -->
-    <section class="downloads-section" id="download" aria-labelledby="downloads-heading">
-      <div class="container">
-        
-        <div class="section-header">
-          <div class="section-tag">Cross-Platform Distribution</div>
-          <h2 id="downloads-heading" class="section-title">Download HPC Studio v1.143.0</h2>
-          <p class="section-desc">Available for Linux supercomputing workstations, Windows clusters, macOS machines, and as an extension for existing VS Code installations.</p>
+      <!-- =========================================================================
+           9. CODE IN ANY LANGUAGE (4 Rows of 3 Columns)
+           ========================================================================= -->
+      <section class="feature-split-section reverse" aria-labelledby="languages-heading">
+        <div class="section-intro-col">
+          <h2 id="languages-heading" class="section-heading-h2">Code in any language</h2>
+          <p class="section-description-text">
+            HPC Studio natively supports the entire computational science stack — from legacy Fortran routines to modern Python orchestration scripts, Slurm batch directives, and ab initio input schemas.
+          </p>
+          <a href="#supported-languages" class="section-learn-more-link">View language specifications</a>
         </div>
+        <div class="section-preview-col" style="background: none; padding: 0;">
+          <div class="supported-languages-grid">
+            <div class="language-row">
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #F59E0B;">⚛️</div>
+                <span class="language-name-mono">Quantum ESPRESSO</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #10B981;">⚡</div>
+                <span class="language-name-mono">Slurm Script</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #38BDF8;">🐍</div>
+                <span class="language-name-mono">Python (ASE)</span>
+              </div>
+            </div>
 
-        <div class="downloads-grid">
-          
+            <div class="language-row">
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #A855F7;">📐</div>
+                <span class="language-name-mono">Modern Fortran</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #6366F1;">⚙️</div>
+                <span class="language-name-mono">C++ / MPI</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #22C55E;">💚</div>
+                <span class="language-name-mono">CUDA / HIP</span>
+              </div>
+            </div>
+
+            <div class="language-row">
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #9333EA;">🟣</div>
+                <span class="language-name-mono">Julia Numerics</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #F97316;">🦀</div>
+                <span class="language-name-mono">Rust High-Perf</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #E2E8F0;">🐚</div>
+                <span class="language-name-mono">Bash / Shell</span>
+              </div>
+            </div>
+
+            <div class="language-row">
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #FACC15;">📋</div>
+                <span class="language-name-mono">JSON / YAML</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #94A3B8;">📝</div>
+                <span class="language-name-mono">Markdown Labs</span>
+              </div>
+              <div class="language-item">
+                <div class="language-icon-box" style="color: #00D2FF;">💎</div>
+                <span class="language-name-mono">CIF Crystal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           10. TWO-COLUMN FEATURE 3: Fully Customizable
+           ========================================================================= -->
+      <section class="feature-split-section" id="customizable" aria-labelledby="customizable-heading">
+        <div class="section-intro-col">
+          <h2 id="customizable-heading" class="section-heading-h2">Fully customizable</h2>
+          <p class="section-description-text">
+            Tailor your research environment to your exact workflow. Choose from dozens of themes, customize keybindings, configure cluster profiles, and create automated simulation pipelines.
+          </p>
+          <a href="#customization-guide" class="section-learn-more-link">Explore themes and settings</a>
+        </div>
+        <div class="section-preview-col">
+          <div class="preview-inner-card">
+            <div class="preview-card-header">
+              <div class="wb-window-dots">
+                <div class="wb-dot red"></div>
+                <div class="wb-dot yellow"></div>
+                <div class="wb-dot green"></div>
+              </div>
+              <span style="font-size: 12px; color: var(--text-title); font-weight: 500;">Settings &bull; Theme Selector &amp; Cluster Profiles</span>
+              <span style="font-size: 11px; color: var(--color-arc-cyan);">JSON / UI</span>
+            </div>
+            <div class="preview-card-content">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="font-size: 13px; color: var(--text-title); font-weight: 600;">Color Theme Profiles:</div>
+                <div style="display: flex; gap: 12px;">
+                  <button class="dl-action-link" style="padding: 8px 12px; flex: 1; border-color: var(--color-arc-cyan);">
+                    <span>Arc Reactor (Cyberpunk Dark)</span>
+                    <span class="file-badge">Active</span>
+                  </button>
+                  <button class="dl-action-link" style="padding: 8px 12px; flex: 1;">
+                    <span>Solarized Dark</span>
+                    <span class="file-badge">Preset</span>
+                  </button>
+                </div>
+                <div style="font-size: 13px; color: var(--text-title); font-weight: 600; margin-top: 8px;">Cluster Connection Profiles:</div>
+                <div style="background: #101317; padding: 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 12px;">
+                  <div><span class="syn-kwd">"hpc.clusters"</span>: [</div>
+                  <div style="padding-left: 1rem;"><span class="syn-str">"node01.national-lab.hpc"</span>: { <span class="syn-var">"slurm"</span>: <span class="syn-num">true</span>, <span class="syn-var">"mpi"</span>: <span class="syn-str">"OpenMPI-4.1"</span> },</div>
+                  <div style="padding-left: 1rem;"><span class="syn-str">"cloud-gpu-node03"</span>: { <span class="syn-var">"cuda"</span>: <span class="syn-str">"12.4"</span>, <span class="syn-var">"partition"</span>: <span class="syn-str">"gpu-a100"</span> }</div>
+                  <div>]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           11. TWO-COLUMN FEATURE 4 (Reverse): Code anywhere
+           ========================================================================= -->
+      <section class="feature-split-section reverse" id="code-anywhere" aria-labelledby="anywhere-heading">
+        <div class="section-intro-col">
+          <h2 id="anywhere-heading" class="section-heading-h2">Code anywhere, from workstation to supercomputer</h2>
+          <p class="section-description-text">
+            Connect directly to remote supercomputing clusters, cloud instances, or local Quantum Mobile virtual machines. Run your simulations where the compute lives while enjoying local editor speed.
+          </p>
+          <a href="#remote-development" class="section-learn-more-link">Learn about Remote SSH</a>
+        </div>
+        <div class="section-preview-col">
+          <div class="preview-inner-card">
+            <div class="preview-card-header">
+              <div class="wb-window-dots">
+                <div class="wb-dot red"></div>
+                <div class="wb-dot yellow"></div>
+                <div class="wb-dot green"></div>
+              </div>
+              <span style="font-size: 12px; color: var(--text-title); font-weight: 500;">Remote - SSH: node01.cluster.hpc</span>
+              <span style="font-size: 11px; color: var(--color-slurm-green); font-weight: 600;">CONNECTED</span>
+            </div>
+            <div class="preview-card-content">
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; background: #171A1E; padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-light);">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="color: var(--color-slurm-green); font-size: 16px;">●</span>
+                    <span style="font-size: 13px; color: var(--text-title); font-weight: 600;">SSH Tunnel active (Port 22 &rarr; 2222)</span>
+                  </div>
+                  <span style="font-size: 11px; color: var(--text-body);">Ping: 4ms</span>
+                </div>
+                <div style="background: #090B0E; padding: 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--text-body);">
+                  <div>[node01:qe_silicon]$ sinfo -p standard</div>
+                  <div style="color: #9CDCFE;">PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST</div>
+                  <div>standard*    up   24:00:00      8   idle compute-[01-08]</div>
+                  <div style="color: var(--color-slurm-green); margin-top: 4px;">✓ HPC Studio server process active on remote node</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           12. RICH FEATURES GRID (2 Rows of 4 Cards = 8 Cards)
+           ========================================================================= -->
+      <section class="rich-features-section" id="rich-features" aria-labelledby="rich-features-heading">
+        <h2 id="rich-features-heading" class="rich-features-heading">Code with rich features</h2>
+        <p class="rich-features-desc">
+          Everything you need to accelerate scientific discovery, from input generation to high-throughput data analysis.
+        </p>
+
+        <div class="rich-features-grid">
+          <!-- Row 1 -->
+          <div class="rich-features-row">
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">⚡</div>
+              <h3 class="rich-feature-title">Integrated Slurm Terminal</h3>
+              <p class="rich-feature-desc-text">Submit batch jobs with sbatch, monitor queues with squeue, and tail job outputs directly inside the terminal drawer.</p>
+            </div>
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">🔮</div>
+              <h3 class="rich-feature-title">Interactive 3D Crystal Viewer</h3>
+              <p class="rich-feature-desc-text">Render CIF and PWI structures with WebGL. Inspect lattice vectors, replicate supercells, and measure interatomic distances.</p>
+            </div>
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">🤖</div>
+              <h3 class="rich-feature-title">DeepMind Antigravity Agents</h3>
+              <p class="rich-feature-desc-text">Autonomous simulation agents equipped with Model Context Protocol (MCP) tools for computational materials research.</p>
+            </div>
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">🛡️</div>
+              <h3 class="rich-feature-title">Pseudopotential Validator</h3>
+              <p class="rich-feature-desc-text">Instant schema linting for UPF and PSLibrary files with automated plane-wave cutoff suggestions for every element.</p>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="rich-features-row">
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">📈</div>
+              <h3 class="rich-feature-title">Band Structure &amp; DOS Plotter</h3>
+              <p class="rich-feature-desc-text">Generate interactive electronic band structure diagrams and Density of States curves from pw.x and bands.x outputs.</p>
+            </div>
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">🌿</div>
+              <h3 class="rich-feature-title">Git &amp; Cluster Version Control</h3>
+              <p class="rich-feature-desc-text">Seamlessly track computational simulation inputs, scripts, and pseudopotentials with built-in Git diffing and branch tools.</p>
+            </div>
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">📦</div>
+              <h3 class="rich-feature-title">Quantum Mobile &amp; VirtualBox</h3>
+              <p class="rich-feature-desc-text">One-click presets connect directly to Quantum Mobile VMs (127.0.0.1:2222) with pre-installed Quantum ESPRESSO tools.</p>
+            </div>
+            <div class="rich-feature-card">
+              <div class="rich-feature-icon">👁️</div>
+              <h3 class="rich-feature-title">Accessible &amp; High Contrast</h3>
+              <p class="rich-feature-desc-text">WCAG compliant dark and high-contrast color palettes tailored for long hours in research laboratories and data centers.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           13. DOWNLOADS MATRIX SECTION
+           ========================================================================= -->
+      <section class="downloads-matrix-section" id="downloads-matrix" aria-labelledby="downloads-heading">
+        <h2 id="downloads-heading" class="downloads-matrix-heading">Download HPC Studio v1.143.0</h2>
+        <p class="downloads-matrix-sub">
+          Available for Linux supercomputing workstations, Windows clusters, macOS systems, and as an extension package.
+        </p>
+
+        <div class="downloads-grid-4col">
           <!-- Linux Card -->
-          <div class="download-card">
-            <div class="dl-platform-icon" aria-hidden="true">🐧</div>
-            <h3 class="dl-platform-name">Linux</h3>
-            <div class="dl-version-tag">Debian, Ubuntu, RHEL, Arch</div>
-            <div class="dl-buttons-list">
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio_1.143.0_amd64.deb" class="btn-dl-item">
-                <span>.deb Package</span> <span class="tag">x64 (Ubuntu/Debian)</span>
+          <div class="dl-platform-card">
+            <div class="dl-platform-header">
+              <div class="dl-platform-icon-box">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C9.5 2 7.5 3.5 7.5 5.5c0 1.2.6 2.3 1.5 3-.5 1-1 2.2-1 3.5 0 2.5 1.5 5 4 5s4-2.5 4-5c0-1.3-.5-2.5-1-3.5.9-.7 1.5-1.8 1.5-3C16.5 3.5 14.5 2 12 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="dl-platform-title">Linux</h3>
+                <div class="dl-platform-badge">Ubuntu, Debian, RHEL, Arch</div>
+              </div>
+            </div>
+            <div class="dl-buttons-stack">
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio_1.143.0_amd64.deb" class="dl-action-link">
+                <span>.deb Package</span>
+                <span class="file-badge">x64</span>
               </a>
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-1.143.0.tar.gz" class="btn-dl-item">
-                <span>.tar.gz Archive</span> <span class="tag">Universal Linux</span>
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-1.143.0.tar.gz" class="dl-action-link">
+                <span>Tarball (.tar.gz)</span>
+                <span class="file-badge">Universal</span>
               </a>
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-1.143.0-arm64.tar.gz" class="btn-dl-item">
-                <span>.tar.gz Archive</span> <span class="tag">ARM64 / Graviton</span>
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-1.143.0-arm64.tar.gz" class="dl-action-link">
+                <span>ARM64 Tarball</span>
+                <span class="file-badge">Graviton</span>
               </a>
             </div>
           </div>
 
           <!-- Windows Card -->
-          <div class="download-card">
-            <div class="dl-platform-icon" aria-hidden="true">🪟</div>
-            <h3 class="dl-platform-name">Windows</h3>
-            <div class="dl-version-tag">Windows 10, 11 &amp; Server (WSL2 ready)</div>
-            <div class="dl-buttons-list">
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-Setup-1.143.0.exe" class="btn-dl-item">
-                <span>User Installer</span> <span class="tag">.exe (x64)</span>
+          <div class="dl-platform-card">
+            <div class="dl-platform-header">
+              <div class="dl-platform-icon-box">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+              </div>
+              <div>
+                <h3 class="dl-platform-title">Windows</h3>
+                <div class="dl-platform-badge">Windows 10, 11 (WSL2)</div>
+              </div>
+            </div>
+            <div class="dl-buttons-stack">
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-Setup-1.143.0.exe" class="dl-action-link">
+                <span>User Installer</span>
+                <span class="file-badge">.exe</span>
               </a>
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-win32-x64-1.143.0.zip" class="btn-dl-item">
-                <span>Portable ZIP</span> <span class="tag">No install needed</span>
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-win32-x64-1.143.0.zip" class="dl-action-link">
+                <span>Portable Archive</span>
+                <span class="file-badge">.zip</span>
               </a>
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-Setup-1.143.0-arm64.exe" class="btn-dl-item">
-                <span>ARM64 Installer</span> <span class="tag">Copilot+ PCs</span>
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-Setup-1.143.0-arm64.exe" class="dl-action-link">
+                <span>ARM64 Installer</span>
+                <span class="file-badge">Snapdragon</span>
               </a>
             </div>
           </div>
 
           <!-- macOS Card -->
-          <div class="download-card">
-            <div class="dl-platform-icon" aria-hidden="true">🍎</div>
-            <h3 class="dl-platform-name">macOS</h3>
-            <div class="dl-version-tag">macOS 11.0 Big Sur or later</div>
-            <div class="dl-buttons-list">
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-1.143.0-arm64.dmg" class="btn-dl-item">
-                <span>Apple Silicon</span> <span class="tag">M1 / M2 / M3 / M4</span>
+          <div class="dl-platform-card">
+            <div class="dl-platform-header">
+              <div class="dl-platform-icon-box">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.64 1.36-.57.66-.99 1.72-.88 2.76 1 .08 2.01-.52 2.6-1.27z"/></svg>
+              </div>
+              <div>
+                <h3 class="dl-platform-title">macOS</h3>
+                <div class="dl-platform-badge">macOS 11.0 Big Sur or later</div>
+              </div>
+            </div>
+            <div class="dl-buttons-stack">
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-1.143.0-arm64.dmg" class="dl-action-link">
+                <span>Apple Silicon</span>
+                <span class="file-badge">M1/M2/M3</span>
               </a>
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-1.143.0-x64.dmg" class="btn-dl-item">
-                <span>Intel Macs</span> <span class="tag">.dmg (x64)</span>
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-1.143.0-x64.dmg" class="dl-action-link">
+                <span>Intel Mac</span>
+                <span class="file-badge">.dmg (x64)</span>
               </a>
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-darwin-universal-1.143.0.zip" class="btn-dl-item">
-                <span>Universal ZIP</span> <span class="tag">All Mac models</span>
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/HPC-Studio-darwin-universal-1.143.0.zip" class="dl-action-link">
+                <span>Universal ZIP</span>
+                <span class="file-badge">Universal</span>
               </a>
             </div>
           </div>
 
-          <!-- VS Code Extension Card -->
-          <div class="download-card">
-            <div class="dl-platform-icon" aria-hidden="true">🧩</div>
-            <h3 class="dl-platform-name">Extension</h3>
-            <div class="dl-version-tag">For standard VS Code / VSCodium</div>
-            <div class="dl-buttons-list">
-              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-extension-1.143.0.vsix" class="btn-dl-item">
-                <span>Download .VSIX</span> <span class="tag">Offline Install</span>
+          <!-- Extension Card -->
+          <div class="dl-platform-card">
+            <div class="dl-platform-header">
+              <div class="dl-platform-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </div>
+              <div>
+                <h3 class="dl-platform-title">Extension</h3>
+                <div class="dl-platform-badge">Standard VS Code &amp; VSCodium</div>
+              </div>
+            </div>
+            <div class="dl-buttons-stack">
+              <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/download/v1.143.0/hpc-studio-extension-1.143.0.vsix" class="dl-action-link">
+                <span>Package (.vsix)</span>
+                <span class="file-badge">Offline</span>
               </a>
-              <a href="https://marketplace.visualstudio.com" target="_blank" rel="noopener noreferrer" class="btn-dl-item">
-                <span>VS Marketplace</span> <span class="tag">Extension Store</span>
+              <a href="https://marketplace.visualstudio.com" target="_blank" rel="noopener noreferrer" class="dl-action-link">
+                <span>VS Marketplace</span>
+                <span class="file-badge">Store</span>
               </a>
-              <a href="https://open-vsx.org" target="_blank" rel="noopener noreferrer" class="btn-dl-item">
-                <span>Open VSX</span> <span class="tag">Open Source Registry</span>
+              <a href="https://open-vsx.org" target="_blank" rel="noopener noreferrer" class="dl-action-link">
+                <span>Open VSX</span>
+                <span class="file-badge">Registry</span>
               </a>
             </div>
           </div>
+        </div>
+      </section>
+    </main>
 
+    <!-- =========================================================================
+         14. FOOTER (Figma: padding 48px 175px 36px)
+         ========================================================================= -->
+    <footer class="site-footer-section" role="contentinfo">
+      <!-- Social row -->
+      <div class="footer-social-row">
+        <div class="social-icons-cluster">
+          <a href="https://github.com/nosedimetuXD/HPC-Studio" class="social-icon-btn" aria-label="HPC Studio GitHub Repository" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://x.com" class="social-icon-btn" aria-label="X (formerly Twitter)" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://youtube.com" class="social-icon-btn" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://discord.com" class="social-icon-btn" aria-label="Discord" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
         </div>
 
-      </div>
-    </section>
-  </main>
-
-  <!-- =========================================================================
-       Footer
-       ========================================================================= -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <div class="brand-wrapper">
-            <div class="logo-arc-reactor" aria-hidden="true">
-              <div class="arc-ring"></div>
-              <div class="arc-core"></div>
-            </div>
-            <span class="brand-title">HPC Studio</span>
-          </div>
-          <p class="footer-brand-desc">
-            The open-source scientific IDE tailored for quantum simulations, high-performance computing clusters, and computational materials research.
-          </p>
-        </div>
-
-        <div>
-          <div class="footer-col-title">Product &amp; Features</div>
-          <ul class="footer-links">
-            <li><a href="#features">Quantum ESPRESSO</a></li>
-            <li><a href="#supercomputing">Slurm Workload Manager</a></li>
-            <li><a href="#tab-btn-crystal">3D Crystal Lattice Visualizer</a></li>
-            <li><a href="#tab-btn-agent">Scientific AI Agents</a></li>
-            <li><a href="#download">Downloads &amp; Releases</a></li>
-          </ul>
-        </div>
-
-        <div id="documentation">
-          <div class="footer-col-title">Documentation</div>
-          <ul class="footer-links">
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio#getting-started" target="_blank" rel="noopener noreferrer">Getting Started Guide</a></li>
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio#quantum-espresso-workflows" target="_blank" rel="noopener noreferrer">Quantum ESPRESSO Workflow</a></li>
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio#slurm-cluster-setup" target="_blank" rel="noopener noreferrer">Connecting to Slurm Clusters</a></li>
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio#mcp-agent-tools" target="_blank" rel="noopener noreferrer">MCP Scientific Tools API</a></li>
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio#faq" target="_blank" rel="noopener noreferrer">Troubleshooting &amp; FAQ</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer-col-title">Community &amp; Code</div>
-          <ul class="footer-links">
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio/issues" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
-            <li><a href="https://github.com/nosedimetuXD/HPC-Studio/releases" target="_blank" rel="noopener noreferrer">Release Notes (v1.143.0)</a></li>
-            <li><a href="https://www.quantum-espresso.org" target="_blank" rel="noopener noreferrer">Quantum ESPRESSO Foundation ↗</a></li>
-            <li><a href="https://slurm.schedmd.com" target="_blank" rel="noopener noreferrer">SchedMD Slurm ↗</a></li>
-          </ul>
-        </div>
+        <svg class="footer-brand-logo-right" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="13" cy="13.5" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="3 3"/>
+          <circle cx="13" cy="13.5" r="5" stroke="#00D2FF" stroke-width="1.8"/>
+          <circle cx="13" cy="13.5" r="2" fill="#4DAAFC"/>
+        </svg>
       </div>
 
-      <div class="footer-bottom">
-        <div class="footer-license">
-          <span>Released under the <strong>MIT License</strong>. Built on Code OSS.</span>
-        </div>
-        <div class="footer-copyright">
-          <span>&copy; 2026 HPC Studio Contributors. All scientific rights reserved.</span>
-        </div>
+      <!-- Legal links row -->
+      <div class="footer-legal-row">
+        <a href="#support" class="footer-legal-link">Support</a>
+        <a href="#privacy" class="footer-legal-link">Privacy</a>
+        <a href="#terms" class="footer-legal-link">Terms of Use</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-legal-link">License (MIT)</a>
       </div>
-    </div>
-  </footer>
+
+      <!-- Privacy choices row -->
+      <div class="footer-privacy-row">
+        <div class="privacy-choices-box">
+          <svg class="privacy-choices-icon" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="36" height="18" rx="9" fill="#0078D4"/>
+            <path d="M12 9l3 3 7-7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="27" cy="9" r="6" fill="#FFFFFF"/>
+          </svg>
+          <a href="#privacy-choices" class="footer-legal-link">Your Privacy Choices</a>
+        </div>
+        <span style="font-size: 12px; color: var(--text-body);">&copy; 2026 HPC Studio Contributors. Built on Code OSS.</span>
+      </div>
+    </footer>
+  </div>
 
   <!-- Scripts -->
   <script src="js/theme.js"></script>

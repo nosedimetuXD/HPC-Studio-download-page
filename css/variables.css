@@ -1,223 +1,110 @@
 /**
- * HPC Studio Design System - Design Tokens & Variables
- * High Performance Computing IDE Design System
+ * HPC Studio Design Tokens & Variables
+ * Pixel-precise extraction based on Visual Studio Code official homepage layout
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cousine:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root,
 [data-theme="dark"] {
-  /* Color Palette - Dark Canvas */
-  --bg-canvas: #040711;
-  --bg-surface: #070c1a;
-  --bg-card: #0a1020;
-  --bg-card-hover: #0f172a;
-  --bg-glass: rgba(10, 16, 32, 0.75);
-  --bg-glass-heavy: rgba(4, 7, 17, 0.88);
-  --bg-dropdown: #0d1527;
+  /* Page Canvas & Surfaces (Exact Figma Hexes) */
+  --bg-page: #0D1014;
+  --bg-nav: #0D1014;
+  --bg-card: #171A1E;
+  --bg-card-hover: #1E2228;
+  --bg-download-box: #20252B;
+  --bg-download-btn: #E6EEF9;
+  --bg-announcement: #071321;
+  --bg-cta-primary: #0078D4;
+  --bg-cta-primary-hover: #0086F0;
+  --bg-try-free-btn: #252A30;
 
-  /* Accent & Core Brand Colors */
-  --color-primary: #00d2ff;
-  --color-primary-glow: #38bdf8;
-  --color-primary-dark: #0284c7;
-  --color-primary-subtle: rgba(0, 210, 255, 0.12);
-  --color-primary-border: rgba(0, 210, 255, 0.3);
+  /* Typography Colors (Exact Figma Hexes) */
+  --text-headline: #E6EEFA;
+  --text-title: #E2E2E2;
+  --text-body: #9FB1D1;
+  --text-link: #4DAAFC;
+  --text-link-hover: #72C0FF;
+  --text-binary-pattern: #333644;
+  --text-btn-dark: #0D1117;
+  --text-btn-white: #FFFFFF;
 
-  /* Scientific Domain Colors */
-  --color-slurm: #10b981;
-  --color-slurm-glow: #34d399;
-  --color-slurm-subtle: rgba(16, 185, 129, 0.12);
-  --color-quantum: #00d2ff;
-  --color-qe-amber: #f59e0b;
-  --color-crystal-purple: #a855f7;
-  --color-danger: #ef4444;
-  --color-warning: #f59e0b;
-  --color-info: #38bdf8;
+  /* Scientific Accents */
+  --color-arc-cyan: #00D2FF;
+  --color-slurm-green: #10B981;
+  --color-qe-amber: #F59E0B;
 
-  /* Typography / Text Colors */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-dim: #475569;
-  --text-inverse: #040711;
-  --text-on-primary: #040711;
-
-  /* Borders & Dividers */
+  /* Borders (Exact Figma Opacity) */
+  --border-light: rgba(255, 255, 255, 0.121569);
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-card: rgba(255, 255, 255, 0.07);
-  --border-active: rgba(0, 210, 255, 0.35);
+  --border-btn-free: rgba(255, 255, 255, 0.188235);
+  --border-focus: #4DAAFC;
 
-  /* Realistic VS Code / Code OSS Workbench Frame Tokens */
-  --wb-titlebar-bg: #04060e;
-  --wb-titlebar-border: rgba(255, 255, 255, 0.06);
-  --wb-titlebar-text: #94a3b8;
-  --wb-activitybar-bg: #03050c;
-  --wb-activitybar-badge: #00d2ff;
-  --wb-activitybar-active: #ffffff;
-  --wb-activitybar-inactive: #64748b;
-  --wb-sidebar-bg: #070c1a;
-  --wb-sidebar-border: rgba(255, 255, 255, 0.06);
-  --wb-sidebar-header: #94a3b8;
-  --wb-tab-bg-active: #0b1326;
-  --wb-tab-bg-inactive: #060a14;
-  --wb-tab-border: rgba(255, 255, 255, 0.05);
-  --wb-tab-active-top-border: #00d2ff;
-  --wb-editor-bg: #080d1c;
-  --wb-editor-gutter: #070b18;
-  --wb-editor-line-number: #475569;
-  --wb-editor-line-active: rgba(0, 210, 255, 0.06);
-  --wb-panel-bg: #050813;
-  --wb-panel-border: rgba(255, 255, 255, 0.07);
-  --wb-statusbar-bg: #0284c7;
-  --wb-statusbar-text: #ffffff;
+  /* Typography Font Stacks */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Cousine', 'JetBrains Mono', 'Cascadia Code', Menlo, Monaco, Consolas, monospace;
 
-  /* Shadows & Glows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
-  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.8);
-  --glow-cyan: 0 0 25px rgba(0, 210, 255, 0.35);
-  --glow-cyan-lg: 0 0 60px rgba(0, 210, 255, 0.22);
-  --glow-slurm: 0 0 25px rgba(16, 185, 129, 0.35);
-  --glow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-
-  /* Syntax Highlighting Tokens (Dark Quantum Core) */
-  --syntax-keyword: #ff7b72;
-  --syntax-function: #d2a8ff;
-  --syntax-string: #a5d6ff;
-  --syntax-variable: #79c0ff;
-  --syntax-comment: #8b949e;
-  --syntax-number: #79c0ff;
-  --syntax-operator: #ff7b72;
-  --syntax-header: #ffa657;
-  --syntax-slurm-param: #10b981;
-  --syntax-qe-namelist: #00d2ff;
-  --syntax-qe-card: #f59e0b;
-}
-
-/* Light Theme Variables */
-[data-theme="light"] {
-  /* Color Palette - Light Canvas */
-  --bg-canvas: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --bg-glass: rgba(255, 255, 255, 0.85);
-  --bg-glass-heavy: rgba(248, 250, 252, 0.95);
-  --bg-dropdown: #ffffff;
-
-  /* Accent & Core Brand Colors */
-  --color-primary: #0284c7;
-  --color-primary-glow: #0ea5e9;
-  --color-primary-dark: #0369a1;
-  --color-primary-subtle: rgba(2, 132, 199, 0.1);
-  --color-primary-border: rgba(2, 132, 199, 0.3);
-
-  /* Scientific Domain Colors */
-  --color-slurm: #059669;
-  --color-slurm-glow: #10b981;
-  --color-slurm-subtle: rgba(5, 150, 105, 0.1);
-  --color-quantum: #0284c7;
-  --color-qe-amber: #d97706;
-  --color-crystal-purple: #9333ea;
-  --color-danger: #dc2626;
-  --color-warning: #d97706;
-  --color-info: #0284c7;
-
-  /* Typography / Text Colors */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-dim: #94a3b8;
-  --text-inverse: #f8fafc;
-  --text-on-primary: #ffffff;
-
-  /* Borders & Dividers */
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-glass: rgba(15, 23, 42, 0.12);
-  --border-card: rgba(15, 23, 42, 0.09);
-  --border-active: rgba(2, 132, 199, 0.4);
-
-  /* Realistic VS Code Workbench Frame Tokens (Light Mode) */
-  --wb-titlebar-bg: #eceff4;
-  --wb-titlebar-border: rgba(15, 23, 42, 0.08);
-  --wb-titlebar-text: #475569;
-  --wb-activitybar-bg: #e2e8f0;
-  --wb-activitybar-badge: #0284c7;
-  --wb-activitybar-active: #0f172a;
-  --wb-activitybar-inactive: #64748b;
-  --wb-sidebar-bg: #f8fafc;
-  --wb-sidebar-border: rgba(15, 23, 42, 0.08);
-  --wb-sidebar-header: #475569;
-  --wb-tab-bg-active: #ffffff;
-  --wb-tab-bg-inactive: #eceff4;
-  --wb-tab-border: rgba(15, 23, 42, 0.06);
-  --wb-tab-active-top-border: #0284c7;
-  --wb-editor-bg: #ffffff;
-  --wb-editor-gutter: #f8fafc;
-  --wb-editor-line-number: #94a3b8;
-  --wb-editor-line-active: rgba(2, 132, 199, 0.05);
-  --wb-panel-bg: #f1f5f9;
-  --wb-panel-border: rgba(15, 23, 42, 0.08);
-  --wb-statusbar-bg: #0284c7;
-  --wb-statusbar-text: #ffffff;
-
-  /* Shadows & Glows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
-  --glow-cyan: 0 0 25px rgba(2, 132, 199, 0.25);
-  --glow-cyan-lg: 0 0 50px rgba(2, 132, 199, 0.15);
-  --glow-slurm: 0 0 20px rgba(5, 150, 105, 0.25);
-  --glow-card: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-
-  /* Syntax Highlighting Tokens (Light Mode) */
-  --syntax-keyword: #cf222e;
-  --syntax-function: #8250df;
-  --syntax-string: #0a3069;
-  --syntax-variable: #0550ae;
-  --syntax-comment: #6e7781;
-  --syntax-number: #0550ae;
-  --syntax-operator: #cf222e;
-  --syntax-header: #953800;
-  --syntax-slurm-param: #116329;
-  --syntax-qe-namelist: #0969da;
-  --syntax-qe-card: #b05a00;
-}
-
-/* Global Font Stacks & Layout Consts */
-:root {
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-mono: "JetBrains Mono", "Cascadia Code", "Fira Code", Consolas, Menlo, Monaco, "Liberation Mono", monospace;
-  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-
-  /* Sizing Scales */
-  --container-max: 1240px;
-  --container-wide: 1400px;
-  --container-narrow: 960px;
-  --header-height: 72px;
-
-  /* Border Radii */
+  /* Radius (Exact Figma Specs) */
   --radius-xs: 4px;
-  --radius-sm: 6px;
+  --radius-sm: 8px;
   --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
+  --radius-lg: 12px;
 
-  /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Atmospheric Gradients */
+  --banner-atmosphere: radial-gradient(28% 150% at 100% 0%, #417A9C 0%, #20285A 50%, rgba(32, 40, 90, 0) 100%),
+                       radial-gradient(24% 140% at 32% 110%, #3C4088 0%, rgba(60, 64, 136, 0) 100%),
+                       radial-gradient(25% 110% at 5% 100%, #638C54 0%, rgba(99, 140, 84, 0) 100%),
+                       radial-gradient(25% 150% at 0% 0%, #3D90B2 0%, rgba(61, 144, 178, 0) 100%),
+                       #0D1014;
 
-  /* Z-Index Hierarchy */
-  --z-canvas: -1;
-  --z-base: 1;
-  --z-card: 10;
-  --z-dropdown: 100;
-  --z-sticky: 500;
-  --z-nav: 1000;
-  --z-modal: 2000;
-  --z-tooltip: 3000;
+  --hero-pattern-fade: linear-gradient(180deg, rgba(13, 17, 23, 0) 0%, rgba(13, 17, 23, 0.266667) 60%, #0D1014 100%);
+  --blue-aura-glow: radial-gradient(circle at 50% 50%, rgba(0, 120, 212, 0.35) 0%, rgba(0, 120, 212, 0.08) 50%, transparent 80%);
+
+  /* Workbench IDE Palette */
+  --wb-titlebar: #16191E;
+  --wb-activitybar: #0F1216;
+  --wb-sidebar: #171A1E;
+  --wb-editor: #121519;
+  --wb-tab-active: #171A1E;
+  --wb-tab-inactive: #101317;
+  --wb-statusbar: #0078D4;
+}
+
+[data-theme="light"] {
+  --bg-page: #F8FAFC;
+  --bg-nav: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F5F9;
+  --bg-download-box: #E2E8F0;
+  --bg-download-btn: #0F172A;
+  --bg-announcement: #E0F2FE;
+  --bg-cta-primary: #0078D4;
+  --bg-cta-primary-hover: #0086F0;
+  --bg-try-free-btn: #F1F5F9;
+
+  --text-headline: #0F172A;
+  --text-title: #1E293B;
+  --text-body: #475569;
+  --text-link: #0284C7;
+  --text-link-hover: #0369A1;
+  --text-binary-pattern: #CBD5E1;
+  --text-btn-dark: #FFFFFF;
+  --text-btn-white: #FFFFFF;
+
+  --border-light: rgba(0, 0, 0, 0.12);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-btn-free: rgba(0, 0, 0, 0.18);
+  --border-focus: #0284C7;
+
+  --banner-atmosphere: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 50%, #E2E8F0 100%);
+  --hero-pattern-fade: linear-gradient(180deg, rgba(248, 250, 252, 0) 0%, rgba(248, 250, 252, 0.5) 60%, #F8FAFC 100%);
+  --blue-aura-glow: radial-gradient(circle at 50% 50%, rgba(0, 120, 212, 0.15) 0%, rgba(0, 120, 212, 0.03) 50%, transparent 80%);
+
+  --wb-titlebar: #E2E8F0;
+  --wb-activitybar: #CBD5E1;
+  --wb-sidebar: #F1F5F9;
+  --wb-editor: #FFFFFF;
+  --wb-tab-active: #FFFFFF;
+  --wb-tab-inactive: #E2E8F0;
+  --wb-statusbar: #0078D4;
 }

@@ -50,6 +50,8 @@
         const icon = termToggle.querySelector('.codicon');
         if (icon) {
           icon.textContent = isCollapsed ? '▲ Terminal' : '▼ Terminal';
+        } else {
+          termToggle.textContent = isCollapsed ? '▲ Terminal' : '▼ Terminal';
         }
       });
     }
