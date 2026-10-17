@@ -33,12 +33,10 @@
         </a>
 
         <nav class="site-links" aria-label="Main Navigation">
-          <a href="#features" class="nav-link-item">Docs</a>
-          <a href="#updates" class="nav-link-item">Updates</a>
-          <a href="#blog" class="nav-link-item">Blog</a>
-          <a href="#api" class="nav-link-item">API</a>
+          <a href="docs.html" class="nav-link-item">Docs</a>
+          <a href="#features" class="nav-link-item">Features</a>
           <a href="#extensions" class="nav-link-item">Extensions</a>
-          <a href="#faq" class="nav-link-item">FAQ</a>
+          <a href="https://github.com/nosedimetuXD/HPC-Studio/releases" target="_blank" rel="noopener noreferrer" class="nav-link-item">Releases</a>
           <a href="https://github.com/nosedimetuXD/HPC-Studio" target="_blank" rel="noopener noreferrer" class="nav-link-item">GitHub</a>
         </nav>
       </div>
@@ -57,7 +55,7 @@
           <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
         </button>
 
-        <a href="https://github.com/nosedimetuXD/HPC-Studio/releases/tag/v1.143.0" class="nav-download-button" data-os-detect-target>
+        <a href="#downloads-matrix" class="nav-download-button">
           <span class="btn-main-text">Download</span>
         </a>
       </div>
@@ -365,7 +363,7 @@ mpirun -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk 2 &lt; pw.scf.sil
           <p class="section-description-text">
             Deploy autonomous scientific agents to handle repetitive simulation loops. Agents configure ab initio parameters, generate reciprocal k-point grids, diagnose SCF oscillations, and orchestrate Slurm workloads across supercomputing nodes.
           </p>
-          <a href="#ai-workflows" class="section-learn-more-link">Explore AI workflows</a>
+          <a href="docs.html#ai-workflows" class="section-learn-more-link">Explore AI workflows</a>
         </div>
         <div class="section-preview-col">
           <div class="preview-inner-card">
@@ -449,7 +447,7 @@ mpirun -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk 2 &lt; pw.scf.sil
           <p class="section-description-text">
             Built directly on Code OSS, HPC Studio combines modern developer ergonomics with specialized computational materials tooling. Enjoy instant syntax highlighting, namelist completion for over 400 Quantum ESPRESSO variables, and seamless Git version control.
           </p>
-          <a href="#editor-features" class="section-learn-more-link">Discover core capabilities</a>
+          <a href="docs.html#features" class="section-learn-more-link">Discover core capabilities</a>
         </div>
         <div class="section-preview-col">
           <div class="preview-inner-card">
@@ -657,7 +655,7 @@ mpirun -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk 2 &lt; pw.scf.sil
           <p class="section-description-text">
             Tailor your research environment to your exact workflow. Choose from dozens of themes, customize keybindings, configure cluster profiles, and create automated simulation pipelines.
           </p>
-          <a href="#customization-guide" class="section-learn-more-link">Explore themes and settings</a>
+          <a href="docs.html#customization" class="section-learn-more-link">Explore themes and settings</a>
         </div>
         <div class="section-preview-col">
           <div class="preview-inner-card">
@@ -705,7 +703,7 @@ mpirun -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk 2 &lt; pw.scf.sil
           <p class="section-description-text">
             Connect directly to remote supercomputing clusters, cloud instances, or local Quantum Mobile virtual machines. Run your simulations where the compute lives while enjoying local editor speed.
           </p>
-          <a href="#remote-development" class="section-learn-more-link">Learn about Remote SSH</a>
+          <a href="docs.html#remote-ssh" class="section-learn-more-link">Learn about Remote SSH</a>
         </div>
         <div class="section-preview-col">
           <div class="preview-inner-card">
@@ -948,25 +946,18 @@ mpirun -np <span class="syn-var">$SLURM_NTASKS</span> pw.x -nk 2 &lt; pw.scf.sil
         </a>
       </div>
 
-      <!-- Legal links row -->
+      <!-- Legal & Resource links row -->
       <div class="footer-legal-row">
-        <a href="#support" class="footer-legal-link">Support</a>
-        <a href="#privacy" class="footer-legal-link">Privacy</a>
-        <a href="#terms" class="footer-legal-link">Terms of Use</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/issues" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Support / Issues</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/discussions" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Discussions</a>
+        <a href="docs.html" class="footer-legal-link">Documentation</a>
         <a href="https://github.com/nosedimetuXD/HPC-Studio/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-legal-link">License (MIT)</a>
+        <a href="https://github.com/nosedimetuXD/HPC-Studio/releases" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Releases</a>
       </div>
 
-      <!-- Privacy choices row -->
-      <div class="footer-privacy-row">
-        <div class="privacy-choices-box">
-          <svg class="privacy-choices-icon" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="36" height="18" rx="9" fill="#0078D4"/>
-            <path d="M12 9l3 3 7-7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="27" cy="9" r="6" fill="#FFFFFF"/>
-          </svg>
-          <a href="#privacy-choices" class="footer-legal-link">Your Privacy Choices</a>
-        </div>
-        <span style="font-size: 12px; color: var(--text-body);">&copy; 2026 HPC Studio Contributors. Built on Code OSS.</span>
+      <!-- Copyright row -->
+      <div class="footer-copyright-row">
+        <span class="footer-copyright-text">&copy; 2026 HPC Studio Contributors. Built on Code OSS.</span>
       </div>
     </footer>
   </div>

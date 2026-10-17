@@ -1503,23 +1503,18 @@ button {
   color: var(--text-title);
 }
 
-.footer-privacy-row {
+.footer-copyright-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 28px;
 }
 
-.privacy-choices-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-}
-
-.privacy-choices-icon {
-  width: 36px;
-  height: 18px;
+.footer-copyright-text {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
   color: var(--text-body);
 }
 
